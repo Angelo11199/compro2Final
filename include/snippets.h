@@ -4,27 +4,19 @@
 // Existing code in snippets.h
 
 // #include <conio.h>
-
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <unordered_map>
 #include <vector>
+
+#include "./handleFile.cpp"
+#include "./print.cpp"
 #define SEPERATOR "|"  // the seperator used in the csv file to seperate the data
 
 // the hashmap to store the data
 std::unordered_map<std::string, std::vector<std::string>> csvData;
 
-// prints in a new line
-template <typename T>
-void print(T Value) {
-    std::cout << Value << std::endl;
-}
-// Prints in the same line
-template <typename U>
-void printLn(U s) {
-    std::cout << s;
-};
 // gets a number from the user
 double getNum(std::string prompt = "") {
     std::string num;
@@ -49,33 +41,6 @@ std::string getStr(std::string prompt = "") {
     std::cout << prompt;
     getline(std::cin, s);
     return s;
-}
-
-// reads the file and returns in string content memory address. returns true if successful
-bool readFile(std::string fileName, std::string& content) {
-    std::ifstream file;
-    file.open(fileName);
-    if (file.is_open()) {
-        std::string line;
-        while (getline(file, line)) {
-            content += line + "\n";
-        }
-        file.close();
-        return true;
-    } else {
-        print("File not found! creating file...");
-        std::ofstream file;
-        file.open(fileName);
-        if (file.is_open()) {
-            print("File created successfully!");
-            file << "sep=" + std::string(SEPERATOR) + "\n";
-            file.close();
-            return true;
-        } else {
-            return false;
-        }
-        return false;
-    }
 }
 
 // adds data to the file. returns true if successful
@@ -179,7 +144,7 @@ void pauseProgram() {
 }
 
 // initializes the csvData. Args : filename, the hashmap to store the data, the indexes used for searching
-void init(std::string content, std::unordered_map<std::string, std::vector<std::string>>& csvData, const std::vector<int>& indexes) {
+void init(std::string content, std::unordered_map<std::string, std::vector<std::string>>& csvData, const std::vector<int>& indexes= {0}) {
     std::string contents;
     print("Initializing...");
     readFile(content, contents)
