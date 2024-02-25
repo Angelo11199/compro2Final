@@ -1,46 +1,39 @@
-#ifndef SNIPPETS_H
-#define SNIPPETS_H
-
-// Existing code in snippets.h
-
-// #include <conio.h>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <unordered_map>
 #include <vector>
 
-#include "../helpers/handleFile.cpp"
-#include "./print.h"
-#define SEPERATOR "|"  // the seperator used in the csv file to seperate the data
+#include "../include/print.h"
 
-// the hashmap to store the data
-std::unordered_map<std::string, std::vector<std::string>> csvData;
-
-// gets a number from the user
-double getNum(std::string prompt = "") {
-    std::string num;
-    char* p;
-    do {
-        std::cout << prompt;
-        std::cin >> num;
-        double convertedNum = strtod(num.c_str(), &p);
-        if (*p) {
-            std::cout << "Invalid input" << std::endl;
-        } else {
-            std::cin.ignore();
-            return convertedNum;
+#define SEPERATOR ","  // the seperator used in the csv file to seperate the data
+#ifndef HANDLEFILE_H
+#define HANDLEFILE_H
+// reads the file and returns in string content memory address. returns true if successful
+bool readFile(std::string fileName, std::string& content) {
+    std::ifstream file;
+    file.open(fileName);
+    if (file.is_open()) {
+        std::string line;
+        while (getline(file, line)) {
+            content += line + "\n";
         }
-    } while (true);
-    return 0;
-}
-
-// gets a string from the user
-std::string getStr(std::string prompt = "") {
-    std::string s;
-    std::cout << prompt;
-    getline(std::cin, s);
-    return s;
+        file.close();
+        return true;
+    } else {
+        print("File not found! creating file...");
+        std::ofstream file;
+        file.open(fileName);
+        if (file.is_open()) {
+            print("File created successfully!");
+            file << "sep=" + std::string(SEPERATOR) + "\n";
+            file.close();
+            return true;
+        } else {
+            return false;
+        }
+        return false;
+    }
 }
 
 // adds data to the file. returns true if successful
@@ -70,7 +63,7 @@ void splitData(std::string str, std::string delimiter, std::vector<std::string>&
     vec.push_back(str);
 }
 // gets the row from the csvData. Args : search value
-std::vector<std::string> getRow(const std::string& value) {
+std::vector<std::string> getRow(const std::string& value, std::unordered_map<std::string, std::vector<std::string>>& csvData) {
     std::vector<std::string> contacts;
     // read csvData and check if the name is in the csvData
     if (csvData.find(value) != csvData.end()) {
@@ -137,14 +130,8 @@ bool updateRow(std::string fileName, std::string colName, std::string newValue, 
     }
     return true;
 }
-// pauses the program and waits for the user to press a key before continuing
-void pauseProgram() {
-    print("press any key to continue...");
-    // getch();
-}
-
 // initializes the csvData. Args : filename, the hashmap to store the data, the indexes used for searching
-void init(std::string content, std::unordered_map<std::string, std::vector<std::string>>& csvData, const std::vector<int>& indexes = {0}) {
+void init(std::string content, std::unordered_map<std::string, std::vector<std::string>>& csvData, const std::vector<int>& indexes) {
     std::string contents;
     print("Initializing...");
     readFile(content, contents)
