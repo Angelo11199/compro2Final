@@ -2,10 +2,9 @@
 
 ## todo
 
--  [ ] login, logout, register
--  [ ] having multiple users all at the same time.
+-  [x] login, logout, register [50% complete] --gelo
 -  [ ] security questions when forgotten
--  [ ] encrypt and decrypt password
+-  [x] encrypt and decrypt password [20% complete] --gelo
 -  [ ] salting and hashing
 -  [ ] password generator
 -  [ ] password strength checker

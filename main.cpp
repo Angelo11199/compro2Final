@@ -3,10 +3,12 @@
 #include "./helpers/handleFile.h"
 #include "./helpers/handleLogin.h"
 #include "./helpers/handlepause.h"
+#include "./helpers/userClass.cpp"
 #include "./include/print.h"
 #include "./include/userInput.h"
 using namespace std;
 struct User {
+    int id;
     string username;
     string password;
     string email;
@@ -15,8 +17,10 @@ struct User {
 unordered_map<string, vector<string>> users;
 int main(int argc, char const* argv[]) {
     string content;
-    init("users.csv", users, {0});
+    userClass user;
+    init("auth.csv", users, {0});
     pause();
+
     clear();
     while (true) {
         print("Welcome to the system");
@@ -25,20 +29,19 @@ int main(int argc, char const* argv[]) {
         print("3. Exit");
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
-            bool loggedIn = login(users);
+            bool loggedIn = login(users,user);
             if (!loggedIn) {
                 print("Login failed! Exiting...");
                 return 0;
             }
         } else if (choice == 2) {
-            User user;
-            user.username = getStr("Enter your username: ");
-            user.password = getStrPrivate("Enter your password: ");
-            user.email = getStr("Enter your email: ");
-            user.phone = getStr("Enter your phone: ");
-            vector<string> userDetails = {user.password, user.email, user.phone};
-            users[user.username] = userDetails;
-            appendFile("users.csv", user.username + "," + user.password + "," + user.email + "," + user.phone);
+            bool isAdded = registerUser(users);
+            if (!isAdded) {
+                print("Failed to register!");
+                pause();
+                clear();
+                continue;
+            }
             print("Registered successfully!");
             pause();
             clear();
