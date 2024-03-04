@@ -36,7 +36,11 @@ class userClass {
         this->phone = "";
     }
     bool login(int id, std::string username, std::string password, std::string email, std::string phone) {
-        // Login the user
+        this->id = id;
+        this->username = username;
+        this->password = password;
+        this->email = email;
+        this->phone = phone;
         return true;
     }
     bool logout() {
@@ -47,6 +51,18 @@ class userClass {
         this->email = "";
         this->phone = "";
         return true;
+    }
+    std::string generatePassword(int len = 20){
+            std::string s;
+        static const char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz"
+        "!@#$%^&*";
+    for (int i = 0; i < len; ++i) {
+        s += alphanum[rand() % (sizeof(alphanum) - 1)];
+    }
+    return s;
     }
     
 
