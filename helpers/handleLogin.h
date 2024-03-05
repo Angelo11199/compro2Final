@@ -60,7 +60,7 @@ bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& use
     return user.login(id, username, password, email, phone);
 
 }
-bool deleteUser(std::unordered_map<std::string, std::vector<std::string>>& users) {
+bool deleteUser(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     std::string username = getStr("Enter the username to delete: ");
     if (users.find(username) != users.end()) {
         // get the id of the user
@@ -73,10 +73,9 @@ bool deleteUser(std::unordered_map<std::string, std::vector<std::string>>& users
         print("User not found!");
     return false;
 }
-bool logout() {
-    
+bool logout(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
+    user.logout();
     print("Logged out successfully!");
     return true;
 }
-
 #endif

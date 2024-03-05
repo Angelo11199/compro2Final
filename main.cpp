@@ -69,11 +69,11 @@ int main(int argc, char const* argv[]) {
             clear();
         } else if (choice == 2) {
             bool isLoggedOut = user.logout();
-            if (isLoggedOut) {
-                print("Logged out successfully!");
+            if(!isLoggedOut){
+                print("Failed to logout!");
                 pause();
                 clear();
-                break;
+                continue;
             }
         } else if (choice == 3) {
             print("Exiting...");
