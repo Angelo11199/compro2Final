@@ -35,7 +35,6 @@ bool readFile(std::string fileName, std::string& content) {
         return false;
     }
 }
-
 // adds data to the file. returns true if successful
 bool appendFile(std::string fileName, std::string content) {
     std::ofstream file;
@@ -72,7 +71,6 @@ std::vector<std::string> getRow(const std::string& value, std::unordered_map<std
     // if not found return empty vector
     return {};
 }
-
 // deletes the row. Args : filename, the name of the first column
 bool deleteRow(std::string fileName, std::string rowName) {
     std::string contents;
@@ -154,5 +152,16 @@ void init(std::string content, std::unordered_map<std::string, std::vector<std::
         }
     }
     print("Initialization complete.");
+}
+bool createFile(std::string fileName) {
+    std::ofstream file;
+    file.open(fileName);
+    if (file.is_open()) {
+        file << "sep=" + std::string(SEPERATOR) + "\n";
+        file.close();
+        return true;
+    } else {
+        return false;
+    }
 }
 #endif

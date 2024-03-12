@@ -9,6 +9,7 @@
 #include "userClass.cpp"
 #ifndef HANDLELOGIN_H
 #define HANDLELOGIN_H
+
 bool login(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     bool isLoggedin = false;
     int tries = 0;
@@ -16,8 +17,8 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
         std::string username = getStr("Enter your username: ");
         std::string password = getStrPrivate("Enter your password: ");
         if (users.find(username) != users.end()) {
-            if (users[username][1] == password) {
-                user.login(stoi(users[username][0]), username, password, users[username][2], users[username][3]);
+            if (users[username][2] == password) {
+                user.login(stoi(users[username][0]), username, password, users[username][2], users[username][3], 9);
                 clear();
                 print("Logged in successfully!");
                 isLoggedin = true;
@@ -42,23 +43,22 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
     }
     return false;
 }
-bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& users,userClass& user) {
+bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     std::string username = getStr("Enter your username: ");
     std::string password = getStrPrivate("Enter your password: ");
     std::string email = getStr("Enter your email: ");
     std::string phone = getStr("Enter your phone: ");
     int id = users.size() + 1;
-    std::vector<std::string> userDetails = {password, email, phone};
+    std::vector<std::string> userDetails = {std::to_string(id), password, email, phone};
     users[username] = userDetails;
-    bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone);
+    bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone + "\n");
     if (!isAdded) {
         print("Failed to register!");
         pause();
         clear();
         return false;
     }
-    return user.login(id, username, password, email, phone);
-
+    return user.login(id, username, password, email, phone, 0);
 }
 bool deleteUser(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     std::string username = getStr("Enter the username to delete: ");

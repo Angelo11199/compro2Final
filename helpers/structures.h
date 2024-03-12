@@ -8,5 +8,17 @@ struct tableData {
     std::string email;
     std::string origin;
 };
-}
+
+struct User {
+    int id;
+    std::string username;
+    std::string password;
+    std::string email;
+    std::string phone;
+    int dataSize;
+    tableData *data;
+};
+
+
 #endif
+

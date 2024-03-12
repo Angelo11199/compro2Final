@@ -26,6 +26,10 @@ class linkedlist {
     }
 
    public:
+    linkedlist() {
+        head = NULL;
+        tail = NULL;
+    }
     void getDataPaginated(int offset = 0, int limit = 20) {
         // Get data from the database
     }
@@ -40,7 +44,6 @@ class linkedlist {
             print(temp->data.password);
             print(temp->data.email);
             print(temp->data.origin);
-
             temp = temp->next;
         }
     }
