@@ -58,7 +58,8 @@ int main(int argc, char const* argv[]) {
         print("2. insert data");
         print("3. Logout");
         print("4. Export passwords to csv");
-        print("5. Exit");
+        print("5. Search data via email");
+        print("6. Exit");
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             user.getDataPaginated();
@@ -82,6 +83,11 @@ int main(int argc, char const* argv[]) {
             pause();
             clear();
 
+        } else if (choice == 5) {
+            string email = getStr("Enter the email to search: ");
+            print(user.search(email));
+            pause();
+            clear();
         } else if (choice == 5) {
             print("Exiting...");
             return 0;

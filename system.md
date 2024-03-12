@@ -6,7 +6,7 @@
 -  [ ] security questions when forgotten
 -  [x] encrypt and decrypt password [20% complete] --gelo
 -  [ ] salting and hashing
--  [ ] password generator
+-  [x] password generator
 -  [ ] password strength checker
 -  [ ] import and export password (via csv files only)
 -  [ ] pagination (implement using a linked list)

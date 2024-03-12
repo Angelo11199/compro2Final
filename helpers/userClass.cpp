@@ -122,5 +122,12 @@ class userClass {
         dataSize++;
         return true;
     }
+    std::string search(std::string email = "mail@mail.com") {
+        if (userCredentials.find(email) != userCredentials.end()) {
+            return "ID: " + userCredentials[email][0] + " Username: " + email + " Password: " + userCredentials[email][1] + " Email: " + userCredentials[email][2] + " Origin: " + userCredentials[email][3];
+        }
+        return "Data not found!";
+    }
 };
+
 #endif
