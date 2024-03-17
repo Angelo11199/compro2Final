@@ -16,9 +16,7 @@ struct User {
     std::string email;
     std::string phone;
     int dataSize;
-    tableData *data;
+    int pos;
 };
 
-
 #endif
-

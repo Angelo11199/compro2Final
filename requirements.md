@@ -41,7 +41,6 @@ Create Functions:
     *Find Element: A function to search for a specific value in the array and return its position.
     If the element is not found, return -1.
     *Print: A function that creates a file that are ready to be printed.
-
     These functions should be able to handle cases and invalid inputs gracefully.
 
 Implement the Menu:

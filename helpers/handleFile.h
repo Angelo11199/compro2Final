@@ -129,7 +129,8 @@ bool updateRow(std::string fileName, std::string colName, std::string newValue, 
     return true;
 }
 // initializes the csvData. Args : filename, the hashmap to store the data, the indexes used for searching
-void init(std::string content, std::unordered_map<std::string, std::vector<std::string>>& csvData, const std::vector<int>& indexes) {
+template <typename T>
+void init(std::string content, std::unordered_map<std::string, std::vector<T>>& csvData, const std::vector<int>& indexes) {
     std::string contents;
     print("Initializing...");
     readFile(content, contents)

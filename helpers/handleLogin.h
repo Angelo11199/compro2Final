@@ -10,7 +10,7 @@
 #ifndef HANDLELOGIN_H
 #define HANDLELOGIN_H
 
-bool login(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
+bool login(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user, int pos = 0) {
     bool isLoggedin = false;
     int tries = 0;
     while (!isLoggedin) {
@@ -18,7 +18,22 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
         std::string password = getStrPrivate("Enter your password: ");
         if (users.find(username) != users.end()) {
             if (users[username][2] == password) {
-                user.login(stoi(users[username][0]), username, password, users[username][2], users[username][3], 9);
+                try {
+                    /*
+                    0: id
+                    1: username
+                    2: password
+                    3: email
+                    4: phone
+                    5: dataSize
+                    */
+
+                    user.login(stoi(users[username][0]), username, password, users[username][3], users[username][4], stoi(users[username][5]));
+                } catch (const std::exception& e) {
+                    print("Data Error! Please contact the administrator!");
+                    pause();
+                    return false;
+                }
                 clear();
                 print("Logged in successfully!");
                 isLoggedin = true;
@@ -51,7 +66,7 @@ bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& use
     int id = users.size() + 1;
     std::vector<std::string> userDetails = {std::to_string(id), password, email, phone};
     users[username] = userDetails;
-    bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone + "\n");
+    bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone + ",0,\n");
     if (!isAdded) {
         print("Failed to register!");
         pause();
