@@ -81,18 +81,24 @@ class userClass {
     }
     void getDataPaginated(int offset = 0, int limit = 20) {
         linkedlist list;
+        // loop through the data and append to the linked list with the offset and limit
         for (auto const &x : userCredentials) {
+            if (offset > 0) {
+                offset--;
+                continue;
+            }
+            if (limit == 0) break;
             tableData data;
             data.id = std::stoi(x.second[0]);
             data.username = x.first;
             data.password = x.second[1];
             data.email = x.second[2];
             data.origin = x.second[3];
-            print("ID: " + std::to_string(data.id) + " Username: " + data.username + " Password: " + data.password + " Email: " + data.email + " Origin: " + data.origin);
+            list.insert(data);
+            limit--;
         }
         // print
         list.display();
-        // Get data from the database
     }
     void exportData() {
         time_t now = time(0);

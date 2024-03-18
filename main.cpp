@@ -62,7 +62,7 @@ int main(int argc, char const* argv[]) {
         print("9. Exit");
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
-            user.getDataPaginated();
+            user.getDataPaginated(0, 20);
             pause();
             clear();
         } else if (choice == 2) {

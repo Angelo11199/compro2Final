@@ -39,10 +39,15 @@ class linkedlist {
     void display() {
         Node* temp = head;
         while (temp != NULL) {
-            print(temp->data.id);
-            print(temp->data.username);
-            print(temp->data.password);
-            print(temp->data.email);
+            // print all in one line
+            printLn(temp->data.id);
+            printLn(", ");
+            printLn(temp->data.username);
+            printLn(", ");
+            printLn(temp->data.password);
+            printLn(", ");
+            printLn(temp->data.email);
+            printLn(", ");
             print(temp->data.origin);
             temp = temp->next;
         }
