@@ -7,18 +7,21 @@ std::string getStr(std::string prompt = "") {
     getline(std::cin, s);
     return s;
 }
-double getNum(std::string prompt = "") {
+int getNum(std::string prompt = "") {
     std::string num;
     char* p;
     while (true) {
         std::cout << prompt;
         std::cin >> num;
-        double convertedNum = strtod(num.c_str(), &p);
+        int n = strtol(num.c_str(), &p, 10);
+        // check if the string is a number
         if (*p) {
-            std::cout << "Invalid input" << std::endl;
+            std::cout << "Invalid input! Please enter a number." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
         } else {
-            std::cin.ignore();
-            return convertedNum;
+            std::cin.ignore(10000, '\n');
+            return n;
         }
     }
     return 0;

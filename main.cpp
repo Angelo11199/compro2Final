@@ -21,7 +21,7 @@ int main(int argc, char const* argv[]) {
         print("1. Login");
         print("2. Register");
         print("3. Exit");
-        int choice = getNum("Enter your choice: ");
+        int choice = (int)getNum("Enter your choice: ");
         if (choice == 1) {
             bool loggedIn = login(users, user);
             if (!loggedIn) {
@@ -60,9 +60,10 @@ int main(int argc, char const* argv[]) {
         print("5. Search data via email");
         print("6. Switch user");
         print("9. Exit");
-        int choice = getNum("Enter your choice: ");
+        int choice = (int)getNum("Enter your choice: ");
         if (choice == 1) {
-            user.getDataPaginated(0, 20);
+            int offset = 0, limit = 20;
+            user.getDataPaginated(offset, limit);
             pause();
             clear();
         } else if (choice == 2) {
@@ -87,7 +88,7 @@ int main(int argc, char const* argv[]) {
             clear();
         } else if (choice == 5) {
             string email = getStr("Enter the email to search: ");
-            print(user.search(email));
+            user.search(email);
             pause();
             clear();
         } else if (choice == 6) {

@@ -27,7 +27,6 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
                     4: phone
                     5: dataSize
                     */
-
                     user.login(stoi(users[username][0]), username, password, users[username][3], users[username][4], stoi(users[username][5]));
                 } catch (const std::exception& e) {
                     print("Data Error! Please contact the administrator!");
@@ -94,3 +93,4 @@ bool logout(std::unordered_map<std::string, std::vector<std::string>>& users, us
     return true;
 }
 #endif
+    

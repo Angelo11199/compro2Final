@@ -69,6 +69,16 @@ class linkedlist {
             temp = temp->next;
         }
     }
+    void deleteAll() {
+        Node* temp = head;
+        while (temp != NULL) {
+            Node* next = temp->next;
+            delete temp;
+            temp = next;
+        }
+        head = NULL;
+    }
+    
     void updateNode(tableData& oldData, tableData& newData) {
         Node* temp = head;
         while (temp != NULL) {

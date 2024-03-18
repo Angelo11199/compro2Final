@@ -48,7 +48,8 @@ class userClass {
         this->count++;
         this->setLoggedInUser(this->current, this->count - 1);
         this->decrypt("salt", this->current.password);
-        init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {3});
+        init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0, 3});
+        pause();
         return true;
     }
 
@@ -80,25 +81,42 @@ class userClass {
         return s;
     }
     void getDataPaginated(int offset = 0, int limit = 20) {
-        linkedlist list;
-        // loop through the data and append to the linked list with the offset and limit
-        for (auto const &x : userCredentials) {
-            if (offset > 0) {
-                offset--;
-                continue;
+        while (true) {
+            linkedlist list;
+            list.deleteAll();
+            int currentPosition = 0;
+            for (auto const &x : userCredentials) {
+                if (currentPosition < offset) {
+                    currentPosition++;
+                    continue;
+                }
+                if (limit == 0) break;
+                tableData data;
+                data.id = std::stoi(x.second[0]);
+                data.username = x.first;
+                data.password = x.second[1];
+                data.email = x.second[2];
+                data.origin = x.second[3];
+                list.insert(data);
+                limit--;
+                currentPosition++;
             }
-            if (limit == 0) break;
-            tableData data;
-            data.id = std::stoi(x.second[0]);
-            data.username = x.first;
-            data.password = x.second[1];
-            data.email = x.second[2];
-            data.origin = x.second[3];
-            list.insert(data);
-            limit--;
+            list.display();
+            int choice = getNum("1. Next page\n2. Previous page\n3. Exit\nEnter your choice: ");
+            print("Choice: " + std::to_string(choice));
+            if (choice == 1) {
+                // increment the offset
+                offset += 20;
+                limit = 20;
+                print("Offset: " + std::to_string(offset));
+            } else if (choice == 2) {
+                offset -= 20;
+                limit = 20;
+                if (offset < 0) offset = 0;  // prevent offset from becoming negative
+            } else if (choice == 3) {
+                break;
+            }
         }
-        // print
-        list.display();
     }
     void exportData() {
         time_t now = time(0);
@@ -137,15 +155,35 @@ class userClass {
         return true;
     }
     std::string search(std::string email = "") {
-        if (userCredentials.find(email) != userCredentials.end()) {
-            return "ID: " + userCredentials[email][0] + " Username: " + email + " Password: " + userCredentials[email][1] + " Email: " + userCredentials[email][2] + " Origin: " + userCredentials[email][3];
+        // search for all possible data
+        print("Searching for " + email + "...");
+        for (auto const &x : userCredentials) {
+            // check the length of userCredentials
+            if (x.second[2] == email) {
+                print("ID: " + x.second[0] + "\nUsername: " + x.first + "\nPassword: " + x.second[1] + "\nEmail: " + x.second[2] + "\nOrigin: " + x.second[3] + "\n");
+            }
         }
+        return "";
+
         return "Data not found!";
     }
     bool switchUser(int id) {
         // search for the user
         for (int i = 0; i < 5; i++) {
             if (loggedInUser[i].id != id) continue;
+            // prompt for password
+            std::string password = getStrPrivate("Enter your password: ");
+            int tries = 0;
+            while (password != loggedInUser[i].password) {
+                print("Invalid password!");
+                tries++;
+                if (tries > 3) {
+                    print("You have reached the maximum number of tries!");
+                    return false;
+                }
+                password = getStrPrivate("Enter your password: ");
+                if (password == loggedInUser[i].password) break;
+            }
             this->current = loggedInUser[i];
             init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {3});
         }
