@@ -12,8 +12,17 @@ class userClass {
     User loggedInUser[5];
     int count = 0;
     std::unordered_map<std::string, std::vector<std::string>> userCredentials;
-    void setLoggedInUser(User user, int pos = 0) {
-        loggedInUser[pos] = user;
+    void setLoggedInUser(User user) {
+        // set the count to the number of filled users in loggedInUser
+        if (this->count > 5 || this->count < 0) {
+            for (int i = 0; i < 5; i++) {
+                if (!loggedInUser[i].username.empty()) {
+                    count++;
+                }
+            }
+        }
+        loggedInUser[this->count] = user;
+        this->count++;
     }
     User getLoggedInUser(int pos = 0) {
         return loggedInUser[pos];
@@ -32,21 +41,22 @@ class userClass {
         this->decrypt("salt", this->current.password);
     }
     bool login(int id, std::string username, std::string password, std::string email, std::string phone, int dataSize = 0) {
-        // check if the user is already logged in
         for (int i = 0; i < 5; i++) {
             if (loggedInUser[i].id == id) {
                 print("User already logged in...");
                 return true;
             }
         }
+        print(username);
         this->current.id = id;
         this->current.username = username;
         this->current.password = password;
         this->current.email = email;
         this->current.phone = phone;
         this->current.dataSize = dataSize;
+        print(this->current.username);
+        this->setLoggedInUser(this->current);
         this->count++;
-        this->setLoggedInUser(this->current, this->count - 1);
         this->decrypt("salt", this->current.password);
         init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0, 3});
         pause();
@@ -54,16 +64,15 @@ class userClass {
     }
 
     bool logout() {
-        // Logout the current user
         for (int i = 0; i < 5; i++) {
-            if (loggedInUser[i].id != this->current.id) continue;
-            // delete the user from the loggedInUser array
-            loggedInUser[i] = {};
+            if (loggedInUser[i].id != this->current.id)
+                continue;
+            else
+                loggedInUser[i] = {};
         }
         updateRow("auth.csv", std::to_string(this->current.id), std::to_string(this->current.dataSize), 5);
         // set the current user to null
         this->current = {};
-
         this->count--;
         return true;
     }
@@ -81,8 +90,9 @@ class userClass {
         return s;
     }
     void getDataPaginated(int offset = 0, int limit = 20) {
+        linkedlist list;
+        tableData data;
         while (true) {
-            linkedlist list;
             list.deleteAll();
             int currentPosition = 0;
             for (auto const &x : userCredentials) {
@@ -90,8 +100,6 @@ class userClass {
                     currentPosition++;
                     continue;
                 }
-                if (limit == 0) break;
-                tableData data;
                 data.id = std::stoi(x.second[0]);
                 data.username = x.first;
                 data.password = x.second[1];
@@ -102,18 +110,18 @@ class userClass {
                 currentPosition++;
             }
             list.display();
-            int choice = getNum("1. Next page\n2. Previous page\n3. Exit\nEnter your choice: ");
-            print("Choice: " + std::to_string(choice));
-            if (choice == 1) {
+            char result = onCharInput("[N] Next page [P] Previous page [E] Exit");
+            result = std::toupper(result);
+            if (result == 'Q') {
                 // increment the offset
                 offset += 20;
                 limit = 20;
                 print("Offset: " + std::to_string(offset));
-            } else if (choice == 2) {
+            } else if (result == 'P') {
                 offset -= 20;
                 limit = 20;
                 if (offset < 0) offset = 0;  // prevent offset from becoming negative
-            } else if (choice == 3) {
+            } else if (result == 'E') {
                 break;
             }
         }
@@ -192,6 +200,7 @@ class userClass {
     User *getLoggedInUsers() {
         return loggedInUser;
     }
+
     ~userClass() {
         // Destructor
     }

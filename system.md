@@ -8,6 +8,6 @@
 -  [x] password generator
 -  [ ] password strength checker
 -  [x] import and export password (via csv files only)
--  [ ] pagination (implement using a linked list)
--  [ ] search
+-  [x] pagination (implement using a linked list)
+-  [x] search
 -  [x] insert (done), delete (done), swap array elements (done)

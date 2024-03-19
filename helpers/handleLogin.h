@@ -10,12 +10,13 @@
 #ifndef HANDLELOGIN_H
 #define HANDLELOGIN_H
 
-bool login(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user, int pos = 0) {
+bool login(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     bool isLoggedin = false;
     int tries = 0;
     while (!isLoggedin) {
         std::string username = getStr("Enter your username: ");
         std::string password = getStrPrivate("Enter your password: ");
+        int id = 0, dataSize = 0;
         if (users.find(username) != users.end()) {
             if (users[username][2] == password) {
                 try {
@@ -27,12 +28,15 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
                     4: phone
                     5: dataSize
                     */
-                    user.login(stoi(users[username][0]), username, password, users[username][3], users[username][4], stoi(users[username][5]));
+                    id = stoi(users[username][0]);
+                    dataSize = stoi(users[username][5]);
                 } catch (const std::exception& e) {
                     print("Data Error! Please contact the administrator!");
                     pause();
                     return false;
                 }
+                user.login(id, username, password, users[username][3], users[username][4], dataSize);
+
                 clear();
                 print("Logged in successfully!");
                 isLoggedin = true;
@@ -93,4 +97,3 @@ bool logout(std::unordered_map<std::string, std::vector<std::string>>& users, us
     return true;
 }
 #endif
-    

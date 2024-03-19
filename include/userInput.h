@@ -26,6 +26,14 @@ int getNum(std::string prompt = "") {
     }
     return 0;
 }
+char onCharInput(std::string prompt = "") {
+    char c;
+    // gets char  input without pressing enter
+    std::cout << prompt;
+    std::cin >> c;
+    std::cin.ignore(10000, '\n');
+    return c;
+}
 #ifdef _WIN32
 #include <conio.h>
 std::string getStrPrivate(std::string prompt = "") {

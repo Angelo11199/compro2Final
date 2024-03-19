@@ -21,14 +21,15 @@ int main(int argc, char const* argv[]) {
         print("1. Login");
         print("2. Register");
         print("3. Exit");
-        int choice = (int)getNum("Enter your choice: ");
+        int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             bool loggedIn = login(users, user);
+            print(loggedIn);
             if (!loggedIn) {
                 print("Login failed! Exiting...");
                 return 0;
-            }
-            break;
+            } else
+                break;
         } else if (choice == 2) {
             bool isAdded = registerUser(users, user);
             if (!isAdded) {
@@ -60,6 +61,12 @@ int main(int argc, char const* argv[]) {
         print("5. Search data via email");
         print("6. Switch user");
         print("9. Exit");
+        User* loggedInUsers = user.getLoggedInUsers();
+        // check length of loggedInUsers
+        if (loggedInUsers[0].id == 0) {
+            print("No user logged in!");
+            return main(argc, argv);
+        }
         int choice = (int)getNum("Enter your choice: ");
         if (choice == 1) {
             int offset = 0, limit = 20;
