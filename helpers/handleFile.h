@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "../include/print.h"
-
 #define SEPERATOR ","  // the seperator used in the csv file to seperate the data
 #ifndef HANDLEFILE_H
 #define HANDLEFILE_H
@@ -32,7 +31,14 @@ void checkFolder() {
 }
 #endif
 
-// reads the file and returns in string content memory address. returns true if successful
+/**
+ * @brief Read the file and store the content in a string
+ *
+ * @param fileName name of the file
+ * @param content string to store the content
+ * @return true if successful
+ * @return false if failed
+ */
 bool readFile(std::string fileName, std::string& content) {
     std::ifstream file;
     file.open(fileName);
@@ -58,7 +64,14 @@ bool readFile(std::string fileName, std::string& content) {
         return false;
     }
 }
-// adds data to the file. returns true if successful
+/**
+ * @brief Append the content to the file
+ *
+ * @param fileName  name of the file
+ * @param content  content to be appended
+ * @return true if successful
+ * @return false if failed
+ */
 bool appendFile(std::string fileName, std::string content) {
     std::ofstream file;
     // open the file in append mode
@@ -72,7 +85,13 @@ bool appendFile(std::string fileName, std::string content) {
         return false;
     }
 }
-// splits the string into a vector
+/**
+ * @brief Split the string into a vector
+ *
+ * @param str string to be split
+ * @param delimiter the delimiter to split the string
+ * @param vec  vector to store the split string
+ */
 void splitData(std::string str, std::string delimiter, std::vector<std::string>& vec) {
     // split the string into a vector (just like an array but can change size)
     size_t pos = 0;
@@ -84,8 +103,15 @@ void splitData(std::string str, std::string delimiter, std::vector<std::string>&
     }
     vec.push_back(str);
 }
-// gets the row from the csvData. Args : search value
-std::vector<std::string> getRow(const std::string& value, std::unordered_map<std::string, std::vector<std::string> >& csvData) {
+/**
+ * @brief Get the row from the csvData
+ *
+ * @param value the name of the first column
+ * @param csvData the hashmap to store the data
+ * @return std::vector<std::string> the row
+ * @return std::vector<std::string> empty vector if not found
+ */
+std::vector<std::string> getRow(const std::string& value, std::unordered_map<std::string, std::vector<std::string>>& csvData) {
     std::vector<std::string> contacts;
     // read csvData and check if the name is in the csvData
     if (csvData.find(value) != csvData.end()) {
@@ -94,7 +120,14 @@ std::vector<std::string> getRow(const std::string& value, std::unordered_map<std
     // if not found return empty vector
     return {};
 }
-// deletes the row. Args : filename, the name of the first column
+/**
+ * @brief Get the row from the csvData
+ *
+ * @param fileName file name
+ * @param rowName value of the first column
+ * @return true if successfull
+ * @return false if not successfull
+ */
 bool deleteRow(std::string fileName, std::string rowName) {
     std::string contents;
     readFile(fileName, contents);
@@ -123,7 +156,16 @@ bool deleteRow(std::string fileName, std::string rowName) {
     }
     return false;
 }
-// updates the row. Args : filename, the name of the first column, the new value, the index to update
+/**
+ * @brief update the row in the file
+ *
+ * @param fileName file name
+ * @param colName name of the column to update
+ * @param newValue new value to be updated
+ * @param indexToUpdate index of the value to be updated
+ * @return true if successfull
+ * @return false if not successfull
+ */
 bool updateRow(std::string fileName, std::string colName, std::string newValue, int indexToUpdate) {
     std::string contents;
     readFile(fileName, contents);
@@ -151,9 +193,16 @@ bool updateRow(std::string fileName, std::string colName, std::string newValue, 
     }
     return true;
 }
-// initializes the csvData. Args : filename, the hashmap to store the data, the indexes used for searching
+/**
+ * @brief loads the csv file into a hashmap
+ *
+ * @tparam T
+ * @param content content of the file
+ * @param csvData vector to store the data
+ * @param indexes indexes of the columns used to search the data
+ */
 template <typename T>
-void init(std::string content, std::unordered_map<std::string, std::vector<T> >& csvData, const std::vector<int>& indexes) {
+void init(std::string content, std::unordered_map<std::string, std::vector<T>>& csvData, const std::vector<int>& indexes) {
     std::string contents;
     print("Initializing...");
     readFile(content, contents)

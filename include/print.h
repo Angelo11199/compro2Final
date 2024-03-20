@@ -1,11 +1,21 @@
 #ifndef PRINT_H
 #define PRINT_H
-// prints in a new line
+/**
+ * @brief print the value to the console with new line at the end
+ *
+ * @tparam T
+ * @param Value anytype of value to be printed
+ */
 template <typename T>
 void print(T Value) {
     std::cout << Value << std::endl;
 }
-// Prints in the same line
+/**
+ * @brief print the value to the console without new line at the end
+ *
+ * @tparam U
+ * @param s anytype of value to be printed
+ */
 template <typename U>
 void printLn(U s) {
     std::cout << s;

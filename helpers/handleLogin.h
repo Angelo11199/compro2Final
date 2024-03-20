@@ -9,7 +9,14 @@
 #include "userClass.cpp"
 #ifndef HANDLELOGIN_H
 #define HANDLELOGIN_H
-
+/**
+ * @brief Login the user.
+ *
+ * @param users used to search for the user.
+ * @param user  the user to searched for.
+ * @return true if logged in successfully
+ * @return false if failed to login
+ */
 bool login(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     bool isLoggedin = false;
     int tries = 0;
@@ -60,6 +67,14 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
     }
     return false;
 }
+/**
+ * @brief Registers the user to the system.
+ *
+ * @param users used to store the user data.
+ * @param user the user to be registered.
+ * @return true if registered successfully
+ * @return false if failed to register
+ */
 bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     std::string username = getStr("Enter your username: ");
     std::string password = getStrPrivate("Enter your password: ");
@@ -77,6 +92,14 @@ bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& use
     }
     return user.login(id, username, password, email, phone, 0);
 }
+/**
+ * @brief Used to delete the user from the system.
+ *
+ * @param users used to store the user data.
+ * @param user the user to be deleted.
+ * @return true if deleted successfully
+ * @return false if failed to delete
+ */
 bool deleteUser(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     std::string username = getStr("Enter the username to delete: ");
     if (users.find(username) != users.end()) {
@@ -90,6 +113,14 @@ bool deleteUser(std::unordered_map<std::string, std::vector<std::string>>& users
         print("User not found!");
     return false;
 }
+/**
+ * @brief Used to logout the user from the system.
+ *
+ * @param users used to store the user data.
+ * @param user the user to be logged out.
+ * @return true if logged out successfully
+ * @return false
+ */
 bool logout(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
     user.logout();
     print("Logged out successfully!");

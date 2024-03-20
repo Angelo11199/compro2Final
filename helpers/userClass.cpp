@@ -6,12 +6,21 @@
 #include "./handleFile.h"
 #include "./linkedlist.h"
 #include "./structures.h"
+/**
+ * @brief userClass is a class that handles the user data.
+ *
+ */
 class userClass {
    private:
     User current;
     User loggedInUser[5];
     int count = 0;
     std::unordered_map<std::string, std::vector<std::string>> userCredentials;
+    /**
+     * @brief Set the Logged In User object
+     *
+     */
+
     void setLoggedInUser(User user) {
         // set the count to the number of filled users in loggedInUser
         if (this->count > 5 || this->count < 0) {
@@ -24,14 +33,63 @@ class userClass {
         loggedInUser[this->count] = user;
         this->count++;
     }
+    /**
+     * @brief Get the Logged In User object
+     *
+     * @param pos the position of the user to get
+     * @return User the user object
+     */
     User getLoggedInUser(int pos = 0) {
         return loggedInUser[pos];
     }
+    /**
+     * @brief Ghost function
+     *
+     * @param salt
+     * @param content
+     */
+    void decrypt(std::string salt, std::string &content) {
+        // Decrypt the content
+    }
+    /**
+     * @brief Ghost function
+     *
+     * @param salt
+     * @param content
+     */
+    void encrypt(std::string salt, std::string &content) {
+        // Encrypt the content
+    }
 
    public:
+    userClass() {}
+    /**
+     * @brief Construct a new user Class object
+     *
+     * @param id
+     * @param username
+     * @param password
+     * @param email
+     * @param phone
+     * @param dataSize
+     * @param pos
+     */
     userClass(int id, std::string username, std::string password, std::string email, std::string phone, int dataSize = 0, int pos = 0) {
         this->login(id, username, password, email, phone, dataSize);
+        this->decrypt("salt", this->current.password);
     }
+    /**
+     * @brief login the user and set the current user to the logged in user
+     *
+     * @param id
+     * @param username
+     * @param password
+     * @param email
+     * @param phone
+     * @param dataSize
+     * @return true
+     * @return false
+     */
     bool login(int id, std::string username, std::string password, std::string email, std::string phone, int dataSize = 0) {
         for (int i = 0; i < 5; i++) {
             if (loggedInUser[i].id == id) {
@@ -54,7 +112,12 @@ class userClass {
         pauseScreen();
         return true;
     }
-
+    /**
+     * @brief logs out the user and sets the current user to null
+     *
+     * @return true if logged out successfully
+     * @return false if failed to logout
+     */
     bool logout() {
         for (int i = 0; i < 5; i++) {
             if (loggedInUser[i].id != this->current.id)
@@ -68,7 +131,12 @@ class userClass {
         this->count--;
         return true;
     }
-    userClass() {}
+    /**
+     * @brief Generates a random password
+     *
+     * @param len the length of the password
+     * @return std::string
+     */
     std::string generatePassword(int len = 20) {
         std::string s;
         static const char alphanum[] =
@@ -81,6 +149,12 @@ class userClass {
         }
         return s;
     }
+    /**
+     * @brief gets the data of the current user and prints it
+     *
+     * @param offset the offset of the data
+     * @param limit the limit of the data
+     */
     void getDataPaginated(int offset = 0, int limit = 20) {
         linkedlist list;
         tableData data;
@@ -115,6 +189,11 @@ class userClass {
             }
         }
     }
+    /**
+     * @brief Export the data to a csv file
+     * @file date_time.csv
+     *
+     */
     void exportData() {
         time_t now = time(0);
         tm *ltm = localtime(&now);
@@ -129,6 +208,12 @@ class userClass {
         // open print wizard
         print("Data exported to " + filename);
     }
+    /**
+     * @brief Insert data to the userCredentials
+     *
+     * @return true if inserted successfully
+     * @return false if failed to insert
+     */
     bool insertData() {
         tableData newData;
         newData.id = this->current.dataSize + 1;
@@ -151,7 +236,14 @@ class userClass {
         this->current.dataSize++;
         return true;
     }
-    std::string search(std::string email = "") {
+    /**
+     * @brief search for the user and prints the data
+     *
+     * @param email the email to search for
+     * @return std::string the result
+     */
+    std::string *search(std::string email = "") {
+        std::string *result = nullptr;
         // search for all possible data
         print("Searching for " + email + "...");
         for (auto const &x : userCredentials) {
@@ -165,9 +257,15 @@ class userClass {
                 print("Origin: " + x.second[3]);
             }
         }
-        print("Data not found!");
-        return "Data not found!";
+        return result;
     }
+    /**
+     * @brief switches the logged in user
+     *
+     * @param id the id of the user to switch to
+     * @return true if switched successfully
+     * @return false if failed to switch user
+     */
     bool switchUser(int id) {
         // search for the user
         for (int i = 0; i < 5; i++) {
@@ -186,10 +284,15 @@ class userClass {
                 if (password == loggedInUser[i].password) break;
             }
             this->current = loggedInUser[i];
-            init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0});
+            init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {3});
         }
         return true;
     }
+    /**
+     * @brief Get the Logged In Users object
+     *
+     * @return User* the logged in users
+     */
     User *getLoggedInUsers() {
         return loggedInUser;
     }
