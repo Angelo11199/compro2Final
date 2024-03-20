@@ -8,7 +8,6 @@
 #include "./include/print.h"
 #include "./include/userInput.h"
 using namespace std;
-
 unordered_map<string, vector<string>> users;
 int main(int argc, char const* argv[]) {
     string content;
@@ -18,10 +17,6 @@ int main(int argc, char const* argv[]) {
     clear();
     //! authentication
     while (true) {
-     // printBox("Welcome to the system", 50, 5);
-     // printBox("1. Login", 15, 5);
-     // printBox("2. Register", 15, 5);
-     // printBox("3. Exit", 15, 5);
         print("                                     _____________________________________________                                   ");
         print("                                    |                                             |                                  ");
         print("                                    |            Welcome to the system            |                                  ");
@@ -64,14 +59,6 @@ int main(int argc, char const* argv[]) {
     }
     // main menu
     while (true) {
-        // printBox("Welcome to the system", 50, 5);
-        // print("1. View data");
-        // print("2. insert data");
-        // print("3. Logout");
-        // print("4. Export passwords to csv");
-        // print("5. Search data via email");
-        //  print("6. Switch user");
-        //  print("9. Exit");
         print("                                     _____________________________________________                                   ");
         print("                                    |                                             |                                  ");
         print("                                    |            Welcome to the system            |                                  ");
