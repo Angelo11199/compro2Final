@@ -25,6 +25,14 @@ void clear() {
 }
 
 #endif
+// check if os is mac
+#ifdef __APPLE__
+#include <stdlib.h>
+#include <string.h>
+void clear() {
+    system("clear");
+}
+#endif
 
 void pauseScreen(std::string message = "Press enter to continue...") {
     std::cout << message;

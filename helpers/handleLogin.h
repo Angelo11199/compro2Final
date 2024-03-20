@@ -36,7 +36,6 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
                     return false;
                 }
                 user.login(id, username, password, users[username][3], users[username][4], dataSize);
-
                 clear();
                 print("Logged in successfully!");
                 isLoggedin = true;

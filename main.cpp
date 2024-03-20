@@ -60,8 +60,14 @@ int main(int argc, char const* argv[]) {
     }
     // main menu
     while (true) {
-        // printBox("Welcome to the system", 50, 5);
-        // print("1. View data");
+        // check screen size
+        int windowWidth = getWidth();
+        if (windowWidth < 120) {
+            print("Please resize the window to a smaller size and try again");
+            pauseScreen();
+            clear();
+            continue;
+        }
         print("                                     _____________________________________________                                   ");
         print("                                    |                                             |                                  ");
         print("                                    |            Welcome to the system            |                                  ");
@@ -72,18 +78,12 @@ int main(int argc, char const* argv[]) {
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("   _______________________________          _______________________________          _______________________________ ");
         print("  |                               |        |                               |        |                               |");
-        print("  |  Export passwords to csv [1]  |        |   Search data via email [5]   |        |         Switch User [3]       |");
+        print("  |  Export passwords to csv [4]  |        |   Search data via email [5]   |        |         Switch User [6]       |");
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("                                            _______________________________                                          ");
         print("                                           |                               |                                         ");
         print("                                           |            Exit [5]           |                                         ");
         print("                                           |_______________________________|                                         ");
-        // print("2. insert data");
-        // print("3. Logout");
-        // print("4. Export passwords to csv");
-        // print("5. Search data via email");
-        //  print("6. Switch user");
-        //  print("9. Exit");
         User* loggedInUsers = user.getLoggedInUsers();
         if (loggedInUsers[0].id == 0) {
             print("No user logged in!");

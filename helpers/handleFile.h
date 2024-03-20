@@ -9,6 +9,29 @@
 #define SEPERATOR ","  // the seperator used in the csv file to seperate the data
 #ifndef HANDLEFILE_H
 #define HANDLEFILE_H
+#ifdef _WIN32
+#include <windows.h>
+void checkFolder() {
+    // check if the folder exists
+    if (GetFileAttributes("data") == INVALID_FILE_ATTRIBUTES) {
+        // create the folder if it does not exist
+        CreateDirectory("data", NULL);
+    }
+}
+#endif
+#if __linux__ || __unix__ || __APPLE__
+void checkFolder() {
+    // check if the folder exists
+    std::ifstream file;
+    file.open("./data/test");
+    if (!file.is_open()) {
+        print("Folder not found! creating folder...");
+        system("mkdir data");
+        file.close();
+    }
+}
+#endif
+
 // reads the file and returns in string content memory address. returns true if successful
 bool readFile(std::string fileName, std::string& content) {
     std::ifstream file;
@@ -62,7 +85,7 @@ void splitData(std::string str, std::string delimiter, std::vector<std::string>&
     vec.push_back(str);
 }
 // gets the row from the csvData. Args : search value
-std::vector<std::string> getRow(const std::string& value, std::unordered_map<std::string, std::vector<std::string>>& csvData) {
+std::vector<std::string> getRow(const std::string& value, std::unordered_map<std::string, std::vector<std::string> >& csvData) {
     std::vector<std::string> contacts;
     // read csvData and check if the name is in the csvData
     if (csvData.find(value) != csvData.end()) {
@@ -130,7 +153,7 @@ bool updateRow(std::string fileName, std::string colName, std::string newValue, 
 }
 // initializes the csvData. Args : filename, the hashmap to store the data, the indexes used for searching
 template <typename T>
-void init(std::string content, std::unordered_map<std::string, std::vector<T>>& csvData, const std::vector<int>& indexes) {
+void init(std::string content, std::unordered_map<std::string, std::vector<T> >& csvData, const std::vector<int>& indexes) {
     std::string contents;
     print("Initializing...");
     readFile(content, contents)
