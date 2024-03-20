@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">Password Management System &amp; Basic Array functions<span id="projectnumber">&#160;1.0.4</span>
    </div>
@@ -106,9 +107,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a189c97b2b7bb15c3f651d4c759f57620" id="r_a189c97b2b7bb15c3f651d4c759f57620"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a189c97b2b7bb15c3f651d4c759f57620">centerText</a> (const std::string &amp;text, int maxWidth=0, char sideChar=' ')</td></tr>
-<tr class="memdesc:a189c97b2b7bb15c3f651d4c759f57620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center the text in the terminal.  <br /></td></tr>
-<tr class="separator:a189c97b2b7bb15c3f651d4c759f57620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a143e401a54621c5b49effffca7b40613" id="r_a143e401a54621c5b49effffca7b40613"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a143e401a54621c5b49effffca7b40613">centerText</a> (const std::string &amp;text, int maxWidth, char sideChar=' ')</td></tr>
+<tr class="separator:a143e401a54621c5b49effffca7b40613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76a224191c235643164774bde0593079" id="r_a76a224191c235643164774bde0593079"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76a224191c235643164774bde0593079">shortenText</a> (const std::string &amp;text, int maxTextWidth)</td></tr>
 <tr class="memdesc:a76a224191c235643164774bde0593079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shorten the text to fit the given width.  <br /></td></tr>
 <tr class="separator:a76a224191c235643164774bde0593079"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,8 +123,8 @@ Functions</h2></td></tr>
 <tr class="separator:a815b41444e15ef6e9c4f4a30d549c7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a189c97b2b7bb15c3f651d4c759f57620" name="a189c97b2b7bb15c3f651d4c759f57620"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a189c97b2b7bb15c3f651d4c759f57620">&#9670;&#160;</a></span>centerText()</h2>
+<a id="a143e401a54621c5b49effffca7b40613" name="a143e401a54621c5b49effffca7b40613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a143e401a54621c5b49effffca7b40613">&#9670;&#160;</a></span>centerText()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +137,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxWidth</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxWidth</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -147,18 +147,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Center the text in the terminal. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">text</td><td>The text to be centered </td></tr>
-    <tr><td class="paramname">maxWidth</td><td>The maximum width of the terminal. Default is 0 </td></tr>
-    <tr><td class="paramname">sideChar</td><td>character to be used for the sides. Default is empty space </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>string The centered text </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00094">94</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00149">149</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
 
 </div>
 </div>
@@ -196,7 +185,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00248">248</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00303">303</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
 
 </div>
 </div>
@@ -234,7 +223,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00120">120</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00175">175</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
 
 </div>
 </div>
@@ -272,7 +261,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00141">141</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00196">196</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
 
 </div>
 </div>
@@ -305,7 +294,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string The shortened text </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00109">109</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="consoleprint_8h_source.html#l00163">163</a> of file <a class="el" href="consoleprint_8h_source.html">consoleprint.h</a>.</p>
 
 </div>
 </div>

@@ -9,5 +9,5 @@ var searchData=
   ['println_6',['printLn',['../print_8h.html#a47807b9ce2f0bf04ad1f2236a2fede03',1,'print.h']]],
   ['printlowercenter_7',['printLowerCenter',['../consoleprint_8h.html#ae43d4d13aaaf43851bd601eed82fc95c',1,'consoleprint.h']]],
   ['printrow_8',['printRow',['../classtable_print.html#a56e795514d792a5be0fcae6f5479ff9c',1,'tablePrint']]],
-  ['printtofile_9',['printToFile',['../alternative_8cpp.html#a7a0b1a9f7391b4858a9dc52a23c5a276',1,'alternative.cpp']]]
+  ['printtofile_9',['printToFile',['../basic_array_manipulation_8cpp.html#a7a0b1a9f7391b4858a9dc52a23c5a276',1,'basicArrayManipulation.cpp']]]
 ];

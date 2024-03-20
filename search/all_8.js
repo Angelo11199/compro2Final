@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['linkedlist_0',['linkedlist',['../classlinkedlist.html',1,'linkedlist'],['../classlinkedlist.html#aa9870570e04392759ad29cf601f0f038',1,'linkedlist::linkedlist()'],['../classlinkedlist.html#abc923543fc9261956f41a1e021d9ea5e',1,'linkedlist::linkedlist(tableData &amp;data, std::string salt=&quot;salt&quot;)']]],
-  ['linkedlist_2eh_1',['linkedlist.h',['../linkedlist_8h.html',1,'']]],
-  ['login_2',['login',['../classuser_class.html#af5b6d3a63d1f25888b12ef3f090d1a60',1,'userClass::login()'],['../handle_login_8h.html#a878b04d70dac6053169eac3c7374c33d',1,'login():&#160;handleLogin.h']]],
-  ['logout_3',['logout',['../classuser_class.html#a6033dcb7a6e64a7340959e1098cc61ef',1,'userClass::logout()'],['../handle_login_8h.html#abdaf66e0d0efcf2cf8a4de589917cdc6',1,'logout():&#160;handleLogin.h']]]
+  ['id_0',['id',['../structtable_data.html#a1145a7a91f524a1b7613bc4c99f3ee3f',1,'tableData::id'],['../struct_user.html#aa7e6e39b43020bbe9c3a196b3689b0f7',1,'User::id']]],
+  ['init_1',['init',['../handle_file_8h.html#a465748fcb73f6bb90dbedfe874880d1e',1,'init(std::string content, std::unordered_map&lt; std::string, std::vector&lt; T &gt; &gt; &amp;csvData, const std::vector&lt; int &gt; &amp;indexes):&#160;handleFile.h'],['../snippets_8h.html#ab9dc4c8afec3f7c40acd66472524737c',1,'init(std::string content, std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt; &amp;csvData, const std::vector&lt; int &gt; &amp;indexes={0}):&#160;snippets.h']]],
+  ['insert_2',['insert',['../classlinkedlist.html#a9ce35235003f7ada8a4e2190e5b75f8e',1,'linkedlist']]],
+  ['insertdata_3',['insertData',['../classuser_class.html#a794f8cb3d28d7c05efe84250e0330346',1,'userClass']]],
+  ['insertelement_4',['insertElement',['../basic_array_manipulation_8cpp.html#aab382ddee73c6b98a146f3df5b13b4ad',1,'basicArrayManipulation.cpp']]],
+  ['introduction_5',['Introduction',['../index.html#intro_sec',1,'']]]
 ];
