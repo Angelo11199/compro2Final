@@ -56,7 +56,6 @@ int main(int argc, char const* argv[]) {
     while (true) {
         // check screen size
         int windowWidth = getWidth();
-        print("column width: " + to_string(windowWidth));
         if (windowWidth < 120) {
             print("Please resize the window to a smaller size and try again");
             pauseScreen();
@@ -73,7 +72,7 @@ int main(int argc, char const* argv[]) {
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("   _______________________________          _______________________________          _______________________________ ");
         print("  |                               |        |                               |        |                               |");
-        print("  |  Export passwords to csv [1]  |        |   Search data via email [5]   |        |         Switch User [3]       |");
+        print("  |  Export passwords to csv [4]  |        |   Search data via email [5]   |        |         Switch User [6]       |");
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("                                            _______________________________                                          ");
         print("                                           |                               |                                         ");

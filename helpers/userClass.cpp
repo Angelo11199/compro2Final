@@ -27,18 +27,10 @@ class userClass {
     User getLoggedInUser(int pos = 0) {
         return loggedInUser[pos];
     }
-    // create a structure to hold the data with dynamic size
-    void decrypt(std::string salt, std::string &content) {
-        // Decrypt the content
-    }
-    void encrypt(std::string salt, std::string &content) {
-        // Encrypt the content
-    }
 
    public:
     userClass(int id, std::string username, std::string password, std::string email, std::string phone, int dataSize = 0, int pos = 0) {
         this->login(id, username, password, email, phone, dataSize);
-        this->decrypt("salt", this->current.password);
     }
     bool login(int id, std::string username, std::string password, std::string email, std::string phone, int dataSize = 0) {
         for (int i = 0; i < 5; i++) {
@@ -57,8 +49,8 @@ class userClass {
         print(this->current.username);
         this->setLoggedInUser(this->current);
         this->count++;
-        this->decrypt("salt", this->current.password);
-        init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0, 3});
+        checkFolder();
+        init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {3});
         pauseScreen();
         return true;
     }
@@ -94,11 +86,14 @@ class userClass {
         tableData data;
         while (true) {
             list.deleteAll();
-            int currentPosition = 0;
+            int count = 0;
             for (auto const &x : userCredentials) {
-                if (currentPosition < offset) {
-                    currentPosition++;
+                if (count < offset) {
+                    count++;
                     continue;
+                }
+                if (count >= offset + limit) {
+                    break;
                 }
                 data.id = std::stoi(x.second[0]);
                 data.username = x.first;
@@ -106,21 +101,15 @@ class userClass {
                 data.email = x.second[2];
                 data.origin = x.second[3];
                 list.insert(data);
-                limit--;
-                currentPosition++;
+                count++;
             }
             list.display();
             char result = onCharInput("[N] Next page [P] Previous page [E] Exit");
             result = std::toupper(result);
-            if (result == 'Q') {
-                // increment the offset
-                offset += 20;
-                limit = 20;
-                print("Offset: " + std::to_string(offset));
-            } else if (result == 'P') {
-                offset -= 20;
-                limit = 20;
-                if (offset < 0) offset = 0;  // prevent offset from becoming negative
+            if (result == 'N') {
+                offset += limit;
+            } else if (result == 'P' && offset >= limit) {
+                offset -= limit;
             } else if (result == 'E') {
                 break;
             }
@@ -166,12 +155,16 @@ class userClass {
         // search for all possible data
         print("Searching for " + email + "...");
         for (auto const &x : userCredentials) {
-            // check the length of userCredentials
             if (x.second[2] == email) {
-                print("ID: " + x.second[0] + "\nUsername: " + x.first + "\nPassword: " + x.second[1] + "\nEmail: " + x.second[2] + "\nOrigin: " + x.second[3] + "\n");
+                print("Data found!");
+                print("ID: " + x.second[0]);
+                print("Username: " + x.first);
+                print("Password: " + x.second[1]);
+                print("Email: " + x.second[2]);
+                print("Origin: " + x.second[3]);
+                return "Data found!";
             }
         }
-        return "";
 
         return "Data not found!";
     }
@@ -205,5 +198,4 @@ class userClass {
         // Destructor
     }
 };
-
 #endif
