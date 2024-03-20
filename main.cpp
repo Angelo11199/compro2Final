@@ -17,6 +17,7 @@ int main(int argc, char const* argv[]) {
     clear();
     //! authentication
     while (true) {
+        //117 character rin
         print("                                     _____________________________________________                                   ");
         print("                                    |                                             |                                  ");
         print("                                    |            Welcome to the system            |                                  ");
