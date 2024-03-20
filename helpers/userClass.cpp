@@ -50,7 +50,7 @@ class userClass {
         this->setLoggedInUser(this->current);
         this->count++;
         checkFolder();
-        init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {3});
+        init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0});
         pauseScreen();
         return true;
     }
@@ -155,17 +155,17 @@ class userClass {
         // search for all possible data
         print("Searching for " + email + "...");
         for (auto const &x : userCredentials) {
-            if (x.second[2] == email) {
+            // 1,test,password,email,origin
+            if (x.second[3] == email) {
                 print("Data found!");
                 print("ID: " + x.second[0]);
                 print("Username: " + x.first);
                 print("Password: " + x.second[1]);
                 print("Email: " + x.second[2]);
                 print("Origin: " + x.second[3]);
-                return "Data found!";
             }
         }
-
+        print("Data not found!");
         return "Data not found!";
     }
     bool switchUser(int id) {
@@ -186,7 +186,7 @@ class userClass {
                 if (password == loggedInUser[i].password) break;
             }
             this->current = loggedInUser[i];
-            init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {3});
+            init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0});
         }
         return true;
     }
