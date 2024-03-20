@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "./helpers/consoleprint.h"
 #include "./helpers/handleFile.h"
 #include "./helpers/handleLogin.h"
@@ -18,10 +17,16 @@ int main(int argc, char const* argv[]) {
     clear();
     //! authentication
     while (true) {
-        printBox("Welcome to the system", 50, 5);
-        printBox("1. Login", 15, 5);
-        printBox("2. Register", 15, 5);
-        printBox("3. Exit", 15, 5);
+        print("                                     _____________________________________________                                   ");
+        print("                                    |                                             |                                  ");
+        print("                                    |            Welcome to the system            |                                  ");
+        print("                                    |_____________________________________________|                                  ");
+        print("   _______________________________          _______________________________          _______________________________ ");
+        print("  |                               |        |                               |        |                               |");
+        print("  |           Login [1]           |        |          Register [2]         |        |            Exit [3]           |");
+        print("  |_______________________________|        |_______________________________|        |_______________________________|");
+        print("                                                                                                                     ");
+
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             bool loggedIn = login(users, user);
@@ -54,8 +59,6 @@ int main(int argc, char const* argv[]) {
     }
     // main menu
     while (true) {
-        // printBox("Welcome to the system", 50, 5);
-        // print("1. View data");
         print("                                     _____________________________________________                                   ");
         print("                                    |                                             |                                  ");
         print("                                    |            Welcome to the system            |                                  ");
@@ -66,18 +69,13 @@ int main(int argc, char const* argv[]) {
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("   _______________________________          _______________________________          _______________________________ ");
         print("  |                               |        |                               |        |                               |");
-        print("  |  Export passwords to csv [1]  |        |   Search data via email [5]   |        |         Switch User [3]       |");
+        print("  |  Export passwords to csv [4]  |        |   Search data via email [5]   |        |         Switch User [6]       |");
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("                                            _______________________________                                          ");
         print("                                           |                               |                                         ");
-        print("                                           |            Exit [5]           |                                         ");
+        print("                                           |            Exit [9]           |                                         ");
         print("                                           |_______________________________|                                         ");
-        // print("2. insert data");
-        // print("3. Logout");
-        // print("4. Export passwords to csv");
-        // print("5. Search data via email");
-        //  print("6. Switch user");
-        //  print("9. Exit");
+
         User* loggedInUsers = user.getLoggedInUsers();
         if (loggedInUsers[0].id == 0) {
             print("No user logged in!");
