@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "./helpers/consoleprint.h"
 #include "./helpers/handleFile.h"
 #include "./helpers/handleLogin.h"
@@ -9,6 +8,7 @@
 #include "./include/print.h"
 #include "./include/userInput.h"
 using namespace std;
+
 unordered_map<string, vector<string>> users;
 int main(int argc, char const* argv[]) {
     string content;
