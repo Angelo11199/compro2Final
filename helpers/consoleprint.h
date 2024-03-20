@@ -51,9 +51,10 @@ int getHeight() {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
     return size.ws_row;
 }
- 
+
 #endif
-std::string centerText(const std::string& text, int maxWidth, char sideChar = ' ') {
+std::string centerText(const std::string& text, int maxWidth = 0, char sideChar = ' ') {
+    maxWidth = getWidth();
     int totalPadding = maxWidth - text.size() - 2;  // subtract 2 for the side characters
     if (totalPadding < 0) totalPadding = 0;         // prevent negative padding
     int leftPadding = totalPadding / 2;
@@ -65,7 +66,36 @@ std::string shortenText(const std::string& text, int maxTextWidth) {
     if (text.size() <= maxTextWidth) return text;
     return text.substr(0, maxTextWidth) + "...";
 }
+#include <vector>  // Add the missing include directive
 
+void printCenterScreen(const std::vector<std::string>& lines, int maxWidth = 0, char sideChar = ' ') {
+    int width = getWidth();
+    int height = getHeight();
+    // Calculate the vertical padding
+    int verticalPadding = (height - lines.size()) / 2;
+    // Print the vertical padding
+    for (int i = 0; i < verticalPadding; i++) {
+        std::cout << std::endl;
+    }
+    // Print each line of text centered
+    for (const auto& line : lines) {
+        std::cout << centerText(line, width, sideChar) << std::endl;
+    }
+}
+void printLowerCenter(const std::vector<std::string>& lines, int maxWidth = 0, char sideChar = ' ') {
+    int width = getWidth();
+    int height = getHeight();
+    // Calculate the vertical padding
+    int verticalPadding = height - lines.size();
+    // Print the vertical padding
+    for (int i = 0; i < verticalPadding; i++) {
+        std::cout << std::endl;
+    }
+    // Print each line of text centered
+    for (const auto& line : lines) {
+        std::cout << centerText(line, width, sideChar) << std::endl;
+    }
+}
 class tablePrint {
    private:
     int numColumns;
