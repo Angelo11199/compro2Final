@@ -1,0 +1,23 @@
+digraph "userClass::userClass"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="userClass::userClass",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="userClass::login",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#af5b6d3a63d1f25888b12ef3f090d1a60",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_file_8h.html#a465748fcb73f6bb90dbedfe874880d1e",tooltip="loads the csv file into a hashmap"];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$print_8h.html#af04078888e447f948566919c3858fe47",tooltip="print the value to the console with new line at the end"];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="readFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_file_8h.html#a5b0c648b10e6d480634c0ff6c5b2628b",tooltip="Read the file and store the content in a string."];
+  Node5 -> Node4 [id="edge5_Node000005_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node3 -> Node6 [id="edge6_Node000003_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="splitData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_file_8h.html#a6f796b929af19755dbd090ee16d5778c",tooltip="Split the string into a vector."];
+  Node2 -> Node7 [id="edge7_Node000002_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="pauseScreen",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac",tooltip="pauses the screen and waits for user to press enter"];
+  Node2 -> Node4 [id="edge8_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+}

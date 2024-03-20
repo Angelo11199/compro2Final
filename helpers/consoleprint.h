@@ -57,7 +57,70 @@ int getHeight() {
     return size.ws_row;
 }
 #endif
+#ifdef __APPLE__
+// get the width of the terminal
+#include <sys/ioctl.h>
+#include <unistd.h>
+int getWidth() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_col;
+}
+int getHeight() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_row;
+}
 
+#endif
+#ifdef __APPLE__
+// get the width of the terminal
+#include <sys/ioctl.h>
+#include <unistd.h>
+int getWidth() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_col;
+}
+int getHeight() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_row;
+}
+
+#endif
+#ifdef __APPLE__
+// get the width of the terminal
+#include <sys/ioctl.h>
+#include <unistd.h>
+int getWidth() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_col;
+}
+int getHeight() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_row;
+}
+
+#endif
+#ifdef __APPLE__
+// get the width of the terminal
+#include <sys/ioctl.h>
+#include <unistd.h>
+int getWidth() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_col;
+}
+int getHeight() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_row;
+}
+
+#endif
 #ifdef __APPLE__
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -83,16 +146,7 @@ int getHeight() {
 }
 
 #endif
-/**
- * @brief Center the text in the terminal
- *
- * @param text  The text to be centered
- * @param maxWidth The maximum width of the terminal. Default is 0
- * @param sideChar character to be used for the sides. Default is empty space
- * @return string The centered text
- */
-std::string centerText(const std::string& text, int maxWidth = 0, char sideChar = ' ') {
-    maxWidth = getWidth();
+std::string centerText(const std::string& text, int maxWidth, char sideChar = ' ') {
     int totalPadding = maxWidth - text.size() - 2;  // subtract 2 for the side characters
     if (totalPadding < 0) totalPadding = 0;         // prevent negative padding
     int leftPadding = totalPadding / 2;
@@ -110,6 +164,7 @@ std::string shortenText(const std::string& text, int maxTextWidth) {
     if (text.size() <= maxTextWidth) return text;
     return text.substr(0, maxTextWidth) + "...";
 }
+// for apple usrs
 /**
  * @brief Print the text in the center of the terminal
  *

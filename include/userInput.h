@@ -61,13 +61,26 @@ char onCharInput(std::string prompt = "") {
  * @return std::string user input
  */
 std::string getStrPrivate(std::string prompt = "") {
+    // get user input without echoing to the console for WINDOWS
     std::string s;
-    std::cout << prompt;
-    s = _getch();
-    while (s != "\r") {
-        std::cout << "*";
-        s += _getch();
+    print(prompt);
+    char ch;
+    while (true) {
+        ch = _getch();
+        if (ch == 13) {
+            std::cout << std::endl;
+            return s;
+        } else if (ch == 8) {
+            if (s.length() > 0) {
+                std::cout << "\b \b";
+                s.pop_back();
+            }
+        } else {
+            s.push_back(ch);
+            std::cout << "*";
+        }
     }
+
     return s;
 }
 #endif

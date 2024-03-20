@@ -8,6 +8,29 @@
 #define SEPERATOR ","  // the seperator used in the csv file to seperate the data
 #ifndef HANDLEFILE_H
 #define HANDLEFILE_H
+#ifdef _WIN32
+#include <windows.h>
+void checkFolder() {
+    // check if the folder exists
+    if (GetFileAttributes("data") == INVALID_FILE_ATTRIBUTES) {
+        // create the folder if it does not exist
+        CreateDirectory("data", NULL);
+    }
+}
+#endif
+#if __linux__ || __unix__ || __APPLE__
+void checkFolder() {
+    // check if the folder exists
+    std::ifstream file;
+    file.open("./data/test");
+    if (!file.is_open()) {
+        print("Folder not found! creating folder...");
+        system("mkdir data");
+        file.close();
+    }
+}
+#endif
+
 /**
  * @brief Read the file and store the content in a string
  *
