@@ -61,4 +61,16 @@ std::string getStrPrivate(std::string prompt = "") {
     return s;
 }
 #endif
+#ifdef __APPLE__
+std::string getStrPrivate(std::string prompt = "") {
+    // get user input without echoing to the console for LINUX
+    std::string s;
+    std::cout << prompt;
+    system("stty -echo");
+    getline(std::cin, s);
+    system("stty echo");
+    std::cout << std::endl;
+    return s;
+}
+#endif
 #endif

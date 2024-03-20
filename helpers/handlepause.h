@@ -9,6 +9,13 @@ void clear() {
 }
 
 #endif
+#ifdef __APPLE__
+#include <stdlib.h>
+#include <string.h>
+void clear() {
+    system("clear");
+}
+#endif
 // check if os is unix or any other
 #ifdef __unix__
 #include <stdlib.h>
@@ -16,6 +23,7 @@ void clear() {
 void clear() {
     system("clear");
 }
+
 #endif
 
 void pauseScreen(std::string message = "Press enter to continue...") {

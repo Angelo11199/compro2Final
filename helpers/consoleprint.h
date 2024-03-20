@@ -36,6 +36,23 @@ int getHeight() {
     return size.ws_row;
 }
 #endif
+
+#ifdef __APPLE__
+// get the width of the terminal
+#include <sys/ioctl.h>
+#include <unistd.h>
+int getWidth() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_col;
+}
+int getHeight() {
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return size.ws_row;
+}
+ 
+#endif
 std::string centerText(const std::string& text, int maxWidth, char sideChar = ' ') {
     int totalPadding = maxWidth - text.size() - 2;  // subtract 2 for the side characters
     if (totalPadding < 0) totalPadding = 0;         // prevent negative padding

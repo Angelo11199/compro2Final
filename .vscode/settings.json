@@ -48,7 +48,11 @@
         "cinttypes": "cpp",
         "iomanip": "cpp",
         "ctime": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "filesystem": "cpp",
+        "ios": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

@@ -14,6 +14,10 @@
                 "${fileDirname}/helpers/",
                 "-o",
                 "${fileDirname}/builds/${fileBasenameNoExtension}"
+                
+                
+                
+                , "-std=c++1y"
             ],
             "options": {
                 "cwd": "${fileDirname}"
