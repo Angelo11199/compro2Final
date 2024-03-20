@@ -178,7 +178,7 @@ class userClass {
                 count++;
             }
             list.display();
-            char result = onCharInput("[N] Next page [P] Previous page [E] Exit");
+            char result = onCharInput("[N] Next page [P] Previous page [E] Exit: ");
             result = std::toupper(result);
             if (result == 'N') {
                 offset += limit;
@@ -186,6 +186,10 @@ class userClass {
                 offset -= limit;
             } else if (result == 'E') {
                 break;
+            } else {
+                print("Invalid input!");
+                pauseScreen();
+                clear();
             }
         }
     }
@@ -276,7 +280,7 @@ class userClass {
             while (password != loggedInUser[i].password) {
                 print("Invalid password!");
                 tries++;
-                if (tries > 3) {
+                if (tries == 3) {
                     print("You have reached the maximum number of tries!");
                     return false;
                 }
