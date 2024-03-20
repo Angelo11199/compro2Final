@@ -14,6 +14,11 @@ using namespace std;
 const int ARRAY_SIZE = 20;
 int arr[ARRAY_SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                        11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+/**
+ * @brief Display the array contents
+ * @details Display the array contents in a formatted manner
+ *
+ */
 void displayArray() {
     clear();
     print(centerText("Array Contents"));
@@ -25,6 +30,12 @@ void displayArray() {
     print("");
     pauseScreen(centerText("Press enter key to continue..."));
 }
+/**
+ * @brief Insert an element at a given position
+ *
+ * @param position The position to insert the element
+ * @param value The value to insert
+ */
 void insertElement(int position, int value) {
     if (position < 0 || position >= ARRAY_SIZE) {
         print(centerText("Invalid position!"));
@@ -35,7 +46,11 @@ void insertElement(int position, int value) {
     }
     arr[position] = value;
 }
-
+/**
+ * @brief delete an element at a given position
+ *
+ * @param position the position to delete the element
+ */
 void deleteElement(int position) {
     if (position < 0 || position >= ARRAY_SIZE) {
         print(centerText("Invalid position!"));
@@ -46,7 +61,12 @@ void deleteElement(int position) {
     }
     arr[ARRAY_SIZE - 1] = 0;  // Assuming 0 as a default value after deletion
 }
-
+/**
+ * @brief swap two elements at given positions
+ *
+ * @param pos1 Position 1 to swap
+ * @param pos2 Position 2 to swap
+ */
 void swapElements(int pos1, int pos2) {
     if (pos1 < 0 || pos1 >= ARRAY_SIZE || pos2 < 0 || pos2 >= ARRAY_SIZE) {
         print(centerText("Invalid positions!"));
@@ -56,7 +76,11 @@ void swapElements(int pos1, int pos2) {
     arr[pos1] = arr[pos2];
     arr[pos2] = temp;
 }
-
+/**
+ * @brief Reverse the array contents
+ *
+ * @return int* The reversed array
+ */
 int *reverseArray() {
     for (int i = 0; i < ARRAY_SIZE / 2; ++i) {
         swap(arr[i], arr[ARRAY_SIZE - 1 - i]);
@@ -64,6 +88,13 @@ int *reverseArray() {
     return arr;
 }
 
+/**
+ * @brief Find an element in the array
+ *
+ * @param value The value to find
+ * @return int The position of the element
+ * @return -1 If the element is not found
+ */
 int findElement(int value) {
     for (int i = 0; i < ARRAY_SIZE; ++i) {
         if (arr[i] == value) {
@@ -72,7 +103,12 @@ int findElement(int value) {
     }
     return -1;  // Element not found
 }
-
+/**
+ * @brief Print the array contents to a file
+ *
+ * @return true If the file is printed successfully
+ * @return false If the file is not printed
+ */
 bool printToFile() {
     ofstream file;
     time_t now = time(0);
@@ -92,7 +128,11 @@ bool printToFile() {
     } else
         return false;
 }
-
+/**
+ * @brief Center loading animation with text
+ *
+ * @param LINELENGTH The length of the line
+ */
 void centerLoadingWithText(int LINELENGTH) {
     for (int i = 1; i <= 2; i++) {
         // Rest of the code...

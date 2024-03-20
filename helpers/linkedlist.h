@@ -4,6 +4,11 @@
 
 #include "./print.h"
 #include "./structures.h"
+
+/**
+ * @brief linkedlist class to store the data in a linked list
+ *
+ */
 class linkedlist {
    private:
     struct Node {
@@ -12,6 +17,12 @@ class linkedlist {
     };
     Node* head;
     Node* tail;
+    /**
+     * @brief Allocate a new node and store the data
+     *
+     * @private
+     * @param tableData data to be stored
+     */
     void allocateNode(tableData& data) {
         Node* newNode = new Node();
         newNode->data = data;
@@ -26,16 +37,26 @@ class linkedlist {
     }
 
    public:
+    /**
+     * @brief Construct a new linkedlist object
+     *
+     */
     linkedlist() {
         head = NULL;
         tail = NULL;
     }
-    void getDataPaginated(int offset = 0, int limit = 20) {
-        // Get data from the database
-    }
+    /**
+     * @brief Insert the data into the linked list
+     *
+     * @param data tableData to be inserted
+     */
     void insert(tableData& data) {
         allocateNode(data);
     }
+    /**
+     * @brief Display the data in the linked list
+     *
+     */
     void display() {
         Node* temp = head;
         while (temp != NULL) {
@@ -52,6 +73,12 @@ class linkedlist {
             temp = temp->next;
         }
     }
+    /**
+     * @brief Delete the node from the linked list
+     *
+     * @param data tableData to be deleted
+     * @param id id of the data to be deleted
+     */
     void deleteNode(tableData& data, int id = 0) {
         Node* temp = head;
         Node* prev = NULL;
@@ -69,6 +96,10 @@ class linkedlist {
             temp = temp->next;
         }
     }
+    /**
+     * @brief Delete all the nodes from the linked list
+     *
+     */
     void deleteAll() {
         Node* temp = head;
         while (temp != NULL) {
@@ -78,7 +109,12 @@ class linkedlist {
         }
         head = NULL;
     }
-    
+    /**
+     * @brief Update the node in the linked list
+     *
+     * @param oldData old data to be updated
+     * @param newData new data to be updated
+     */
     void updateNode(tableData& oldData, tableData& newData) {
         Node* temp = head;
         while (temp != NULL) {
@@ -89,56 +125,20 @@ class linkedlist {
             temp = temp->next;
         }
     }
-    void search(tableData& data, int field = 0, std::string query = "") {
-        Node* temp = head;
-        while (temp != NULL) {
-            switch (field) {
-                case 0:
-                    if (temp->data.id == data.id) {
-                        print(temp->data.id);
-                        print(temp->data.username);
-                        print(temp->data.password);
-                        print(temp->data.email);
-                        print(temp->data.origin);
-                        return;
-                    }
-                    break;
-                case 1:
-                    if (temp->data.username == data.username) {
-                        // std::cout << temp->data.id << " " << temp->data.username << " " << temp->data.password << " " << temp->data.email << " " << temp->data.origin << std::endl;
-                        return;
-                    }
-                    break;
-                case 2:
-                    if (temp->data.password == data.password) {
-                        // std::cout << temp->data.id << " " << temp->data.username << " " << temp->data.password << " " << temp->data.email << " " << temp->data.origin << std::endl;
-                        return;
-                    }
-                    break;
-                case 3:
-                    if (temp->data.email == data.email) {
-                        // std::cout << temp->data.id << " " << temp->data.username << " " << temp->data.password << " " << temp->data.email << " " << temp->data.origin << std::endl;
-                        return;
-                    }
-                    break;
-                case 4:
-                    if (temp->data.origin == data.origin) {
-                        // std::cout << temp->data.id << " " << temp->data.username << " " << temp->data.password << " " << temp->data.email << " " << temp->data.origin << std::endl;
-                        return;
-                    }
-                    break;
-                default:
-                    // std::cout << "Invalid field" << std::endl;
-                    return;
-            }
-            temp = temp->next;
-        }
-        // std::cout << "Data not found" << std::endl;
-    }
+    /**
+     * @brief create a linked list from the tableData
+     *
+     * @param data tableData to be inserted
+     * @param salt salt to be used. Default is "salt"
+     */
     linkedlist(tableData& data, std::string salt = "salt") {
         head = NULL;
         tail = NULL;
     }
+    /**
+     * @brief Destroy the linkedlist object
+     *
+     */
     ~linkedlist() {
         Node* temp = head;
         while (temp != NULL) {

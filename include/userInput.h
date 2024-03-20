@@ -1,12 +1,24 @@
 #ifndef USERINPUT_H
 #define USERINPUT_H
 #include <iostream>
+/**
+ * @brief Get the user input as string
+ *
+ * @param prompt message to be displayed
+ * @return std::string user input
+ */
 std::string getStr(std::string prompt = "") {
     std::string s;
     std::cout << prompt;
     getline(std::cin, s);
     return s;
 }
+/**
+ * @brief Get an integer from the user with error checking
+ *
+ * @param prompt  message to be displayed
+ * @return int  user input
+ */
 int getNum(std::string prompt = "") {
     std::string num;
     char* p;
@@ -26,6 +38,12 @@ int getNum(std::string prompt = "") {
     }
     return 0;
 }
+/**
+ * @brief Get the user input as char
+ *
+ * @param prompt message to be displayed
+ * @return char user input
+ */
 char onCharInput(std::string prompt = "") {
     char c;
     // gets char  input without pressing enter
@@ -36,6 +54,12 @@ char onCharInput(std::string prompt = "") {
 }
 #ifdef _WIN32
 #include <conio.h>
+/**
+ * @brief Get string input without echoing to the console
+ *
+ * @param prompt  message to be displayed
+ * @return std::string user input
+ */
 std::string getStrPrivate(std::string prompt = "") {
     std::string s;
     std::cout << prompt;
@@ -44,12 +68,16 @@ std::string getStrPrivate(std::string prompt = "") {
         std::cout << "*";
         s += _getch();
     }
-    std::cout << std::endl;
     return s;
 }
-
 #endif
 #ifdef __unix__
+/**
+ * @brief Get string input without echoing to the console
+ *
+ * @param prompt  message to be displayed
+ * @return std::string user input
+ */
 std::string getStrPrivate(std::string prompt = "") {
     // get user input without echoing to the console for LINUX
     std::string s;
@@ -62,6 +90,12 @@ std::string getStrPrivate(std::string prompt = "") {
 }
 #endif
 #ifdef __APPLE__
+/**
+ * @brief Get string input without echoing to the console
+ *
+ * @param prompt  message to be displayed
+ * @return std::string user input
+ */
 std::string getStrPrivate(std::string prompt = "") {
     // get user input without echoing to the console for LINUX
     std::string s;
