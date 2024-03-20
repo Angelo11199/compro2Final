@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "./helpers/consoleprint.h"
 #include "./helpers/handleFile.h"
 #include "./helpers/handleLogin.h"
 #include "./helpers/handlepause.h"
@@ -13,14 +14,14 @@ int main(int argc, char const* argv[]) {
     string content;
     userClass user;
     init("auth.csv", users, {1});
-    pause();
+    pauseScreen();
     clear();
     //! authentication
     while (true) {
-        print("Welcome to the system");
-        print("1. Login");
-        print("2. Register");
-        print("3. Exit");
+        printBox("Welcome to the system", 50, 5);
+        printBox("1. Login", 15, 5);
+        printBox("2. Register", 15, 5);
+        printBox("3. Exit", 15, 5);
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             bool loggedIn = login(users, user);
@@ -34,12 +35,12 @@ int main(int argc, char const* argv[]) {
             bool isAdded = registerUser(users, user);
             if (!isAdded) {
                 print("Failed to register!");
-                pause();
+                pauseScreen();
                 clear();
                 continue;
             }
             print("Registered successfully!");
-            pause();
+            pauseScreen();
             clear();
             break;
         } else if (choice == 3) {
@@ -47,41 +48,56 @@ int main(int argc, char const* argv[]) {
             return 0;
         } else {
             print("Invalid choice!");
-            pause();
+            pauseScreen();
             clear();
         }
     }
     // main menu
     while (true) {
-        print("Welcome to the system");
-        print("1. View data");
-        print("2. insert data");
-        print("3. Logout");
-        print("4. Export passwords to csv");
-        print("5. Search data via email");
-        print("6. Switch user");
-        print("9. Exit");
+        // printBox("Welcome to the system", 50, 5);
+        // print("1. View data");
+        print("                                     _____________________________________________                                   ");
+        print("                                    |                                             |                                  ");
+        print("                                    |            Welcome to the system            |                                  ");
+        print("                                    |_____________________________________________|                                  ");
+        print("   _______________________________          _______________________________          _______________________________ ");
+        print("  |                               |        |                               |        |                               |");
+        print("  |         View data [1]         |        |        Insert data [2]        |        |           Logout [3]          |");
+        print("  |_______________________________|        |_______________________________|        |_______________________________|");
+        print("   _______________________________          _______________________________          _______________________________ ");
+        print("  |                               |        |                               |        |                               |");
+        print("  |  Export passwords to csv [1]  |        |   Search data via email [5]   |        |         Switch User [3]       |");
+        print("  |_______________________________|        |_______________________________|        |_______________________________|");
+        print("                                            _______________________________                                          ");
+        print("                                           |                               |                                         ");
+        print("                                           |            Exit [5]           |                                         ");
+        print("                                           |_______________________________|                                         ");
+        // print("2. insert data");
+        // print("3. Logout");
+        // print("4. Export passwords to csv");
+        // print("5. Search data via email");
+        //  print("6. Switch user");
+        //  print("9. Exit");
         User* loggedInUsers = user.getLoggedInUsers();
-        // check length of loggedInUsers
         if (loggedInUsers[0].id == 0) {
             print("No user logged in!");
             return main(argc, argv);
         }
-        int choice = (int)getNum("Enter your choice: ");
+        int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             int offset = 0, limit = 20;
             user.getDataPaginated(offset, limit);
-            pause();
+            pauseScreen();
             clear();
         } else if (choice == 2) {
             user.insertData();
-            pause();
+            pauseScreen();
             clear();
         } else if (choice == 3) {
             bool isLoggedOut = user.logout();
             if (!isLoggedOut) {
                 print("Failed to logout!");
-                pause();
+                pauseScreen();
                 clear();
                 continue;
             } else {
@@ -91,12 +107,12 @@ int main(int argc, char const* argv[]) {
         } else if (choice == 4) {
             user.exportData();
             print("Data exported successfully!");
-            pause();
+            pauseScreen();
             clear();
         } else if (choice == 5) {
             string email = getStr("Enter the email to search: ");
             user.search(email);
-            pause();
+            pauseScreen();
             clear();
         } else if (choice == 6) {
             User* loggedInUsers = user.getLoggedInUsers();
@@ -119,12 +135,12 @@ int main(int argc, char const* argv[]) {
             bool isSwitched = user.switchUser(loggedInUsers[id - 1].id);
             if (!isSwitched) {
                 print("Failed to switch user!");
-                pause();
+                pauseScreen();
                 clear();
                 continue;
             }
             print("User switched successfully!");
-            pause();
+            pauseScreen();
             clear();
         } else if (choice == 9) {
             print("Exiting...");
@@ -132,7 +148,7 @@ int main(int argc, char const* argv[]) {
 
         } else {
             print("Invalid choice!");
-            pause();
+            pauseScreen();
             clear();
         }
     }

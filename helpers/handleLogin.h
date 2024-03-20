@@ -32,7 +32,7 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
                     dataSize = stoi(users[username][5]);
                 } catch (const std::exception& e) {
                     print("Data Error! Please contact the administrator!");
-                    pause();
+                    pauseScreen();
                     return false;
                 }
                 user.login(id, username, password, users[username][3], users[username][4], dataSize);
@@ -50,11 +50,11 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
             print("Invalid username!");
             tries++;
         }
-        pause();
+        pauseScreen();
         clear();
         if (tries > 3) {
             print("You have reached the maximum number of tries!");
-            pause();
+            pauseScreen();
             clear();
             return false;
         }
@@ -72,7 +72,7 @@ bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& use
     bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone + ",0,\n");
     if (!isAdded) {
         print("Failed to register!");
-        pause();
+        pauseScreen();
         clear();
         return false;
     }

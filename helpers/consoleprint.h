@@ -69,23 +69,31 @@ class tablePrint {
     void printHeaders() {
         std::string header = "";
         int maxWidth = getWidth();
-        print("");
+        int maxRowWidth = (maxWidth / (numColumns));
         for (int i = 0; i < numColumns; i++) {
-            header += centerText(headers[i], maxWidth / numColumns, headerChar);
+            header += centerText(headers[i], maxRowWidth, i % 2 == 1 ? ' ' : headerChar);
         }
-        print(centerText(header, maxWidth, sideChar));
+        // print a line after the header
+        std::string line = "";
+        for (int i = 0; i < maxWidth; i++) {
+            line += "-";
+        }
+        print(header);
+        print(line);
     }
+
     void printRow(std::string row[]) {
         std::string rowStr = "";
         std::string line = "";
         int maxWidth = getWidth();
+        int maxRowWidth = (maxWidth / numColumns);
+        for (int i = 0; i < numColumns; i++) {
+            rowStr += centerText(row[i], maxRowWidth, i % 2 == 1 ? ' ' : rowChar);
+        }
         for (int i = 0; i < maxWidth; i++) {
             line += "-";
         }
-        for (int i = 0; i < numColumns; i++) {
-            rowStr += centerText(shortenText(row[i], (maxWidth / numColumns) - 5), maxWidth / numColumns, rowChar);
-        }
-        print(centerText(rowStr, maxWidth, sideChar));
+        print(rowStr);
         // print a line after each row
         print(line);
     }
@@ -93,4 +101,29 @@ class tablePrint {
         delete[] headers;
     }
 };
+void printBox(std::string text, int boxWidth = 15, int boxHeight = 1) {
+    int textWidth = text.size();
+    int textHeight = 1;
+    if (textWidth > boxWidth - 2) {
+        textWidth = boxWidth - 2;
+        text = shortenText(text, textWidth - 5);
+        textHeight = text.size() / (boxWidth - 2);
+    }
+    if (textHeight > boxHeight - 2) {
+        textHeight = boxHeight - 2;
+    }
+    std::string line = "";
+    for (int i = 0; i < boxWidth; i++) {
+        line += "-";
+    }
+    print(line);
+    for (int i = 0; i < boxHeight - 2; i++) {
+        if (i == (boxHeight - 2) / 2) {
+            print("|" + centerText(text, boxWidth - 2) + "|");
+        } else {
+            print("|" + std::string(boxWidth - 2, ' ') + "|");
+        }
+    }
+    print(line);
+}
 #endif

@@ -18,7 +18,7 @@ void clear() {
 }
 #endif
 
-void pause(std::string message = "Press enter to continue...") {
+void pauseScreen(std::string message = "Press enter to continue...") {
     std::cout << message;
     std::string s;
     getline(std::cin, s);

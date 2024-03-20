@@ -59,7 +59,7 @@ class userClass {
         this->count++;
         this->decrypt("salt", this->current.password);
         init("./data/" + std::to_string(this->current.id) + ".csv", userCredentials, {0, 3});
-        pause();
+        pauseScreen();
         return true;
     }
 
