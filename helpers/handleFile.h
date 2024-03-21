@@ -18,15 +18,23 @@ void checkFolder() {
     }
 }
 #endif
+/**
+ * @brief Check if the folder exists and create it if it does not
+ * @details This function checks if the folder exists and creates it if it does not
+
+*/
 #if __linux__ || __unix__ || __APPLE__
+#include <sys/stat.h>
 void checkFolder() {
-    // check if the folder exists
-    std::ifstream file;
-    file.open("./data/");
-    if (!file.is_open()) {
+    struct stat info;
+
+    if (stat("./data", &info) != 0) {
         print("Folder not found! creating folder...");
         system("mkdir data");
-        file.close();
+    } else if (info.st_mode & S_IFDIR) {
+        return;
+    } else {
+        print("data is no directory");
     }
 }
 #endif
