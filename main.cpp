@@ -38,7 +38,6 @@ int main(int argc, char const* argv[]) {
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             bool loggedIn = login(users, user);
-            print(loggedIn);
             if (!loggedIn) {
                 print("Login failed! Exiting...");
                 return 0;

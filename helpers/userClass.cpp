@@ -97,14 +97,12 @@ class userClass {
                 return true;
             }
         }
-        print(username);
         this->current.id = id;
         this->current.username = username;
         this->current.password = password;
         this->current.email = email;
         this->current.phone = phone;
         this->current.dataSize = dataSize;
-        print(this->current.username);
         this->setLoggedInUser(this->current);
         this->count++;
         checkFolder();
