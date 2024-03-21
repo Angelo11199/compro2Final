@@ -34,16 +34,8 @@ void clear() {
 void clear() {
     system("clear");
 }
+#endif
 
-#endif
-// check if os is mac
-#ifdef __APPLE__
-#include <stdlib.h>
-#include <string.h>
-void clear() {
-    system("clear");
-}
-#endif
 
 /**
  * @brief pauses the screen and waits for user to press enter
@@ -55,4 +47,4 @@ void pauseScreen(std::string message = "Press enter to continue...") {
     std::string s;
     getline(std::cin, s);
 }
-#endif
+#endif 
