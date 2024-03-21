@@ -22,7 +22,7 @@ void checkFolder() {
 void checkFolder() {
     // check if the folder exists
     std::ifstream file;
-    file.open("./data/test");
+    file.open("./data/");
     if (!file.is_open()) {
         print("Folder not found! creating folder...");
         system("mkdir data");

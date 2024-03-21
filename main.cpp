@@ -17,7 +17,15 @@ int main(int argc, char const* argv[]) {
     pauseScreen();
     clear();
     //! authentication
+
     while (true) {
+        int windowWidth = getWidth();
+        if (windowWidth < 120) {
+            print("Please resize the window to a wider size and try again");
+            pauseScreen();
+            clear();
+            continue;
+        }
         print("                                     _____________________________________________                                   ");
         print("                                    |                                             |                                  ");
         print("                                    |            Welcome to the system            |                                  ");
