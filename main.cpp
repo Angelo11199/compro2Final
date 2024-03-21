@@ -8,6 +8,48 @@
 #include "./helpers/userClass.cpp"
 #include "./include/print.h"
 #include "./include/userInput.h"
+/**
+ * \mainpage Password Manager and Array manipulation Program By Aisukurimu
+ *  \authors Angelo A. Maminta (Aisukurimu) and John Romar Francisco
+ *  \section intro_sec Introduction
+ *  This is a simple password manager that allows you to store and retrieve passwords.
+ *  \section passwordManage Password Manager
+ *  \subsection  features Features
+ * - Login and register
+ * - Insert data
+ * - View data
+ * - Export data to csv
+ * - Search data via email
+ * - Switch user
+ * - Logout
+ * - Exit
+ * \subsection  how_to_use How to use
+ * - Run the program
+ * - Register or login
+ * - Use the features
+ * - Logout or exit
+ *  \subsection supported_platforms Supported Platforms
+ * - Windows
+ * - Linux
+ * - MacOS
+ * \section  basic_array_manipulation Basic Array Manipulation
+ * \subsection  features Features
+ * - Insert data
+ * - Delete data
+ * - Update data
+ * - Search data
+ * - View data
+ * - Export data to txt
+ * - Exit
+ * \subsection  how_to_use How to use
+ * - Run the program
+ * - Use the features
+ * - Exit
+ * \subsection supported_platforms Supported Platforms
+ * - Windows
+ * - Linux
+ * - MacOS
+ */
 using namespace std;
 unordered_map<string, vector<string>> users;
 int main(int argc, char const* argv[]) {
