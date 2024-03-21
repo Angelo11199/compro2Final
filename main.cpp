@@ -18,10 +18,15 @@ int main(int argc, char const* argv[]) {
     clear();
     //! authentication
     while (true) {
-        printBox("Welcome to the system", 50, 5);
-        printBox("1. Login", 15, 5);
-        printBox("2. Register", 15, 5);
-        printBox("3. Exit", 15, 5);
+        print("                                     _____________________________________________                                   ");
+        print("                                    |                                             |                                  ");
+        print("                                    |            Welcome to the system            |                                  ");
+        print("                                    |_____________________________________________|                                  ");
+        print("   _______________________________          _______________________________          _______________________________ ");
+        print("  |                               |        |                               |        |                               |");
+        print("  |           Login [1]           |        |          Register [2]         |        |            Exit [3]           |");
+        print("  |_______________________________|        |_______________________________|        |_______________________________|");
+        print("                                                                                                                     ");
         int choice = getNum("Enter your choice: ");
         if (choice == 1) {
             bool loggedIn = login(users, user);
@@ -76,7 +81,7 @@ int main(int argc, char const* argv[]) {
         print("  |_______________________________|        |_______________________________|        |_______________________________|");
         print("                                            _______________________________                                          ");
         print("                                           |                               |                                         ");
-        print("                                           |            Exit [5]           |                                         ");
+        print("                                           |            Exit [9]           |                                         ");
         print("                                           |_______________________________|                                         ");
         User* loggedInUsers = user.getLoggedInUsers();
         if (loggedInUsers[0].id == 0) {
