@@ -76,54 +76,14 @@ bool login(std::unordered_map<std::string, std::vector<std::string>>& users, use
  * @return false if failed to register
  */
 bool registerUser(std::unordered_map<std::string, std::vector<std::string>>& users, userClass& user) {
-    std::string username, password, email, phone;
-    // loop until the username is unique and not empty
-    while (true) {
-        username = getStr("Enter your username: ");
-        if (username.empty()) {
-            print("Username cannot be empty!");
-            pauseScreen();
-            clear();
-            continue;
-        }
-        // check if the username is already taken
-        if (users.find(username) != users.end()) {
-            print("Username already taken!");
-            pauseScreen();
-            clear();
-            continue;
-        }
-        break;
-    }
-    while (true) {
-        password = getStrPrivate("Enter your password: ");
-        if (password.empty()) {
-            print("Password cannot be empty!");
-            pauseScreen();
-            clear();
-            continue;
-        }
-        email = getStr("Enter your email: ");
-        if (email.empty()) {
-            print("Email cannot be empty!");
-            pauseScreen();
-            clear();
-            continue;
-        }
-        phone = getStr("Enter your phone number: ");
-        if (phone.empty()) {
-            print("Phone number cannot be empty!");
-            pauseScreen();
-            clear();
-            continue;
-        }
-
-        break;
-    }
+    std::string username = getStr("Enter your username: ");
+    std::string password = getStrPrivate("Enter your password: ");
+    std::string email = getStr("Enter your email: ");
+    std::string phone = getStr("Enter your phone: ");
     int id = users.size() + 1;
     std::vector<std::string> userDetails = {std::to_string(id), password, email, phone};
     users[username] = userDetails;
-    bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone + ",0\n");
+    bool isAdded = appendFile("auth.csv", std::to_string(id) + "," + username + "," + password + "," + email + "," + phone + ",0,\n");
     if (!isAdded) {
         print("Failed to register!");
         pauseScreen();
