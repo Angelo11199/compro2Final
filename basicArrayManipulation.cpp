@@ -193,7 +193,9 @@ int main() {
         print(centerText("  |_______________________________|                                                 |_______________________________|"));
         print(centerText("                                                                                                                     "));
         print(centerText("                                                                                                                     "));
-        char choice = getch();
+
+        char choice = getStr("Enter your choice: ")[0];
+
         switch (choice) {
             case '1': {
                 displayArray();

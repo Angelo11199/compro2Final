@@ -83,7 +83,7 @@ int getHeight() {
 }
 
 #endif
-std::string centerText(const std::string& text, int maxWidth, char sideChar = ' ') {
+std::string centerText(const std::string& text, int maxWidth = 1, char sideChar = ' ') {
     int totalPadding = maxWidth - text.size() - 2;  // subtract 2 for the side characters
     if (totalPadding < 0) totalPadding = 0;         // prevent negative padding
     int leftPadding = totalPadding / 2;
