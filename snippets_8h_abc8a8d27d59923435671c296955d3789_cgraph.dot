@@ -7,7 +7,7 @@ digraph "deleteRow"
   rankdir="LR";
   Node1 [id="Node000001",label="deleteRow",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="readFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_file_8h.html#a5b0c648b10e6d480634c0ff6c5b2628b",tooltip="Read the file and store the content in a string."];
+  Node2 [id="Node000002",label="readFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_file_8h.html#a5b0c648b10e6d480634c0ff6c5b2628b",tooltip="Check if the folder exists and create it if it does not."];
   Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$print_8h.html#af04078888e447f948566919c3858fe47",tooltip="print the value to the console with new line at the end"];
   Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];

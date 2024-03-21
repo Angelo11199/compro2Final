@@ -9,5 +9,5 @@ digraph "centerLoadingWithText"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="printLowerCenter",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$consoleprint_8h.html#ae43d4d13aaaf43851bd601eed82fc95c",tooltip="Print the text in the center horizontally and lower vertically of the terminal."];
   Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="centerText",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$consoleprint_8h.html#a189c97b2b7bb15c3f651d4c759f57620",tooltip="Center the text in the terminal."];
+  Node3 [id="Node000003",label="centerText",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$consoleprint_8h.html#a143e401a54621c5b49effffca7b40613",tooltip=" "];
 }

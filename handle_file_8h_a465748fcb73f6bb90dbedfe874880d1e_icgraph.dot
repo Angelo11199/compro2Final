@@ -7,18 +7,18 @@ digraph "init"
   rankdir="RL";
   Node1 [id="Node000001",label="init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="loads the csv file into a hashmap"];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="userClass::login",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#af5b6d3a63d1f25888b12ef3f090d1a60",tooltip=" "];
+  Node2 [id="Node000002",label="userClass::login",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#af5b6d3a63d1f25888b12ef3f090d1a60",tooltip="login the user and set the current user to the logged in user"];
   Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="login",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_login_8h.html#a878b04d70dac6053169eac3c7374c33d",tooltip=" "];
+  Node3 [id="Node000003",label="login",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_login_8h.html#a878b04d70dac6053169eac3c7374c33d",tooltip="Login the user."];
   Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node4 [id="Node000004",label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#abf9e6b7e6f15df4b525a2e7705ba3089",tooltip=" "];
   Node2 -> Node5 [id="edge4_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="registerUser",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_login_8h.html#a236eccfa527cfa844403d6f0373ca92c",tooltip=" "];
+  Node5 [id="Node000005",label="registerUser",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$handle_login_8h.html#a236eccfa527cfa844403d6f0373ca92c",tooltip="Registers the user to the system."];
   Node5 -> Node4 [id="edge5_Node000005_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node2 -> Node6 [id="edge6_Node000002_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node6 [id="Node000006",label="userClass::userClass",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#ae9a9f0fba02a755747facfc3d850a8b2",tooltip=" "];
+  Node6 [id="Node000006",label="userClass::userClass",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#ae9a9f0fba02a755747facfc3d850a8b2",tooltip="Construct a new user Class object."];
   Node1 -> Node4 [id="edge7_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node7 [id="edge8_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node7 [id="Node000007",label="userClass::switchUser",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#a0788fec4d4dba518980ad9b236f27d01",tooltip=" "];
+  Node7 [id="Node000007",label="userClass::switchUser",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classuser_class.html#a0788fec4d4dba518980ad9b236f27d01",tooltip="switches the logged in user"];
   Node7 -> Node4 [id="edge9_Node000007_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
 }

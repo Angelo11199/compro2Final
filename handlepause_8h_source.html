@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Password Management System &amp; Basic Array functions: helpers/handlepause.h Source File</title>
+<title>Password management system &amp; Basic Array Functions: helpers/handlepause.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,8 +24,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Password Management System &amp; Basic Array functions<span id="projectnumber">&#160;1.0.4</span>
+   <div id="projectname">Password management system &amp; Basic Array Functions<span id="projectnumber">&#160;1.0.6</span>
    </div>
+   <div id="projectbrief">The Password Management System with Basic Array Functions offers a comprehensive solution for users to manage their passwords securely while also providing essential array manipulation capabilities for general-purpose programming tasks. With its user-friendly interface, advanced security features, and efficient array operations, the system aims to streamline password management and enhance the overall user experience.</div>
   </td>
  </tr>
  </tbody>
@@ -110,24 +111,16 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// check if os is mac</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifdef __APPLE__</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">void</span> clear() {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    system(<span class="stringliteral">&quot;clear&quot;</span>);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac">   53</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac">pauseScreen</a>(std::string message = <span class="stringliteral">&quot;Press enter to continue...&quot;</span>) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::cout &lt;&lt; message;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    std::string s;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    getline(std::cin, s);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac">pauseScreen</a>(std::string message = <span class="stringliteral">&quot;Press enter to continue...&quot;</span>) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::cout &lt;&lt; message;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    std::string s;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    getline(std::cin, s);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="ahandlepause_8h_html_aa2dfe82c1a9b8abacbe2f709c3cdafac"><div class="ttname"><a href="handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac">pauseScreen</a></div><div class="ttdeci">void pauseScreen(std::string message=&quot;Press enter to continue...&quot;)</div><div class="ttdoc">pauses the screen and waits for user to press enter</div><div class="ttdef"><b>Definition</b> <a href="#l00053">handlepause.h:53</a></div></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="ahandlepause_8h_html_aa2dfe82c1a9b8abacbe2f709c3cdafac"><div class="ttname"><a href="handlepause_8h.html#aa2dfe82c1a9b8abacbe2f709c3cdafac">pauseScreen</a></div><div class="ttdeci">void pauseScreen(std::string message=&quot;Press enter to continue...&quot;)</div><div class="ttdoc">pauses the screen and waits for user to press enter</div><div class="ttdef"><b>Definition</b> <a href="#l00045">handlepause.h:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
